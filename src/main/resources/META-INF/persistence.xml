@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+version="2.1">
+
+<persistence-unit name="airlines">
+    	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    	<class>com.prochainvol.sql.airport.SqlAirport</class> <!-- aeroports -->
+		<class>com.prochainvol.sql.airlines.AirlineCompany</class> <!-- ailines -->
+		<class>com.prochainvol.sql.route.Route</class> <!-- routes --> <!-- traveltaxonomy -->
+		<properties>
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<!--  
+				pour les tests : 46.31.194.10 | 
+				en exploitation : localhost 
+				
+				voir aussi  log4j.properties, log4j.properties.linux, log4j.properties.windows à swapper
+			-->
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://46.31.194.10:3306/prochainvoldev?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+			<property name="javax.persistence.jdbc.user" value="prochainvol" />
+			<property name="javax.persistence.jdbc.password" value="sidolou1" />
+
+			<!-- EclipseLink should create the database schema automatically -->
+			<property name="eclipselink.ddl-generation" value="create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode"
+				value="database" />
+		</properties>
+	</persistence-unit>
+
+</persistence>

@@ -1,0 +1,62 @@
+{
+  "all": {
+    "ORY": [
+      {
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "ORY",
+        "city": "Paris",
+        "country": "France",
+        "name": "Orly",
+        "maj": "28 Aug 2015 07:47:14 CEST"
+      }
+    ],
+    "CDG": [
+      {
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "CDG",
+        "city": "Paris",
+        "country": "France",
+        "name": "Charles De Gaulle",
+        "maj": "28 Aug 2015 07:47:14 CEST"
+      },
+      {
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "CDG",
+        "city": "Paris",
+        "country": "France",
+        "name": "toto",
+        "maj": "28 Aug 2015 07:47:14 CEST"
+      }
+    ],
+    "LON": [
+      {
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "LON",
+        "city": "London",
+        "country": "United Kingdom",
+        "name": "London all ariports",
+        "maj": "28 Aug 2015 07:47:14 CEST"
+      }
+    ],
+    "MRS": [
+      {
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "MRS",
+        "icao": "LFML",
+        "city": "Marseille",
+        "country": "France",
+        "name": "Provence",
+        "maj": "28 Aug 2015 07:47:14 CEST",
+        "timezone": 1.0,
+        "dst": "E",
+        "latitude": 43.435555,
+        "longitude": 5.213611
+      }
+    ]
+  }
+}

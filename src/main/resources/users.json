@@ -1,0 +1,12 @@
+{
+  "userMap": {
+    "pratt": {
+      "name": "pratt",
+      "password": "corto"
+    },
+    "thomas": {
+      "name": "thomas",
+      "password": "sidolou1"
+    }
+  }
+}

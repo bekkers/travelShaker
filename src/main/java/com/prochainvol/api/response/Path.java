@@ -37,7 +37,7 @@ public class Path extends ProchainvolObject implements Serializable {
 		if (operatingCarrierName!= null) {
 			this.CarrierName = operatingCarrierName;
 		} else {
-			AirlineCompany airlinecompanie = AirlineCompany.getDEFAULT_AIRLINE_COMPANIES().get(operatingCarrierIataCode);
+			AirlineCompany airlinecompanie = ProchainvolConfig.getAirlinecompanies().getAirCompany(operatingCarrierIataCode);
 			this.CarrierName = airlinecompanie.getIata();
 		}
 	}

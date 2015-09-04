@@ -4,8 +4,9 @@ import org.apache.log4j.Logger;
 
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.JsonUtilities;
+import com.prochainvol.sql.AbstractSqlReader;
 
-public class DebugAirportReader extends AbstractAirportReader{
+public class DebugAirportReader extends AbstractSqlReader<Airports>{
 
 	private static final Logger logger = Logger.getLogger(DebugAirportReader.class
 			.getName());
@@ -23,7 +24,6 @@ public class DebugAirportReader extends AbstractAirportReader{
 	public Airports load() throws ProchainvolException {
 		final String msg = "Building a debug airport table with entities : {Marseille, london, orly, charlesDeGaulle}";
 		logger.info(msg);
-		rapport.start();
 		
 		return JsonUtilities.readFromInputStream(Airports.class, airportList);
 	}

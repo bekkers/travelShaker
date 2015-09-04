@@ -90,7 +90,6 @@ public class LoginServlet extends HttpServlet {
 			logger.info(String.format("Starting session for %s on %s, IP is %s", userName, remoteHost, remoteAddr));
 			ProchainvolConfig config =  new ProchainvolConfig();
 			config.setUser(userName);
-			config.init();
 			session.setAttribute(Constants.SESS_PROCHAINVOL_CONFIG, config);
 			SessionInfo sessionInfo = new SessionInfo();
 			sessionInfo.setUserName(userName);

@@ -41,3 +41,25 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Eclipse
+.classpath
+*.project
+.settings/**/*
+*.prefs
+build/**/*
+target/**/*
+
+
+OldConstants.java
+login.properties
+
+
+# Java
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+/target/

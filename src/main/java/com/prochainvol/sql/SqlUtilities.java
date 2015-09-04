@@ -7,8 +7,6 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.prochainvol.sql.airport.MysqlDataSource;
-
 public class SqlUtilities {
 	
 	public static void affiche(ResultSet resultat) throws SQLException {

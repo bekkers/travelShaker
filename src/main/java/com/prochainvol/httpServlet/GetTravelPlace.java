@@ -56,7 +56,7 @@ public class GetTravelPlace extends HttpServlet {
 				}
 
 				SqlAirport travelplace = prochainvolConfig
-						.getTravelplace(iata, false);
+						.getAirports().getAirport(iata);
 				if (travelplace == null) {
 					json = JsonUtilities.createResponseErr("Aita inconnu = " + iata);
 				} else {

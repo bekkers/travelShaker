@@ -35,7 +35,7 @@ public class SqlTest {
 	@Test
 	public void testGetAirport() {
 		try {
-			ProchainvolConfig config = ProchainvolConfig.createDefaultProchainvolConfig();
+			ProchainvolConfig config = new ProchainvolConfig();
 		} catch (Exception e) {
 			JunitConstants.reportError(e);
 		}
@@ -45,8 +45,10 @@ public class SqlTest {
 	@Test
 	public void testDebugAirports() {
 		try {
-			DebugAirportReader debugAirportReader = new DebugAirportReader();
+			TobeAddedAirportReader debugAirportReader = new TobeAddedAirportReader();
 			Airports airports = debugAirportReader.load();
+			List<String> listBugs = airports.checkAirports();
+			assertEquals(1, listBugs.size());
 			System.out.println("airports =" + airports);
 
 
@@ -76,7 +78,7 @@ public class SqlTest {
 			List<SqlAirport> sqlAirports1 = (List<SqlAirport>) q1.getResultList();
 			assertEquals(1, sqlAirports1.size());
 			SqlAirport marseille = sqlAirports1.get(0);
-			// System.out.println("Marseille Provence=" + marseille);
+			System.out.println("Marseille Provence=" + marseille);
 			assertEquals(cityMarseille, marseille.getCity());
 
 			// read by iata : Orly

@@ -16,7 +16,7 @@ import com.prochainvol.api.response.FlightRecommendation;
 import com.prochainvol.api.response.Path;
 import com.prochainvol.api.response.RequestResultUnit;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.DebugAirportReader;
+import com.prochainvol.sql.airport.TobeAddedAirportReader;
 import com.prochainvol.sql.airport.SqlAirport;
 
 public class JunitConstants {
@@ -48,7 +48,7 @@ public class JunitConstants {
 				.getReturnPath();
 		assertEquals(1, returnPath.size());
 		Path returnFlight = returnPath.get(0);
-		SqlAirport airportFrom = config.getTravelplace(returnFlight.getRoute()
+		SqlAirport airportFrom = config.getAirports().getAirport(returnFlight.getRoute()
 				.getDepartureAirportIata());
 		assertEquals(expectedAirportName, airportFrom.getName());
 

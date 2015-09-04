@@ -53,7 +53,7 @@ public class Request extends HttpServlet {
 		return output;
 	}
 
-	private synchronized ProchainvolConfig getProchainvolConfig(
+	public static synchronized ProchainvolConfig getProchainvolConfig(
 			HttpServletRequest request, HttpServletResponse httpResponse,
 			String output) throws IOException, ServletException {
 		HttpSession session = request.getSession();

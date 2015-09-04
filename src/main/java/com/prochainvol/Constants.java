@@ -43,6 +43,15 @@ public class Constants {
 			PROCHAINVOL_PROPS.getProperty(
 					"datePickerDateFormat", "MM/dd/yyyy"), new Locale("en", "US"));
 
+	static final String shortDateTimeFormat = PROCHAINVOL_PROPS.getProperty(
+			"prochainvolShortDateTimeFormat", "dd MMMM hh:mm aaa");
+	public static final SimpleDateFormat PROCHAINVOL_SHORT_DATE_TIME_FORMAT = new SimpleDateFormat(
+			shortDateTimeFormat, Locale.FRANCE);
+	static final String shortDateFormat = PROCHAINVOL_PROPS.getProperty(
+			"prochainvolShortDateTimeFormat", "dd MMM yyyy");
+	public static final SimpleDateFormat PROCHAINVOL_SHORT_DATE_FORMAT = new SimpleDateFormat(
+			shortDateFormat, Locale.FRANCE);
+
 	public static final String iataRegExpr = "^\\(([A-Z0-9]{3})\\).*$";
 	public static final String multipleIataRegExpr = "^([A-Z0-9]{3})(\\;[A-Z0-9]{3}))*$";
 	

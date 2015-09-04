@@ -138,11 +138,14 @@ public class OdigeoAnswerBuilder extends
 				airlineCompany.setName(carrier.getName());
 				String iata = carrier.getCode();
 				airlineCompany.setIata(iata);
-				AirlineCompany sqlCarrier = config.getCarriers().get(iata);
-				if (sqlCarrier == null) {
-					System.out.println("Unknown carrier : " + airlineCompany);
+				List<AirlineCompany> carrierList = ProchainvolConfig.getAirlinecompanies().getAll().get(iata);
+				if (carrierList == null) {
+					logger.error("Unknown carrier : " + airlineCompany);
+				} else if (carrierList.size()>1) {
+					logger.error("More than one carrier known for iata " + iata);
 				} else {
-					airlineCompany = sqlCarrier;
+
+					airlineCompany = carrierList.get(0);
 					// System.out.println("airlineCompany : " + airlineCompany);
 				}
 				airlineCompanyMap.put(iata, airlineCompany);

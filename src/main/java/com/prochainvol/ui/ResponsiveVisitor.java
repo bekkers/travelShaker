@@ -1,11 +1,9 @@
 package com.prochainvol.ui;
 
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
@@ -29,6 +27,7 @@ import com.prochainvol.api.response.Path;
 import com.prochainvol.api.response.ReportUnit;
 import com.prochainvol.api.response.RequestResult;
 import com.prochainvol.api.response.RequestResultUnit;
+import com.prochainvol.sql.airport.SqlAirport;
 import com.prochainvol.sql.airport.TravelplaceReaderReport;
 
 public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
@@ -45,77 +44,12 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 		int length = iatas.length;
 		String[] depIds = new String[length];
 		for (int i = 0; i < length; i++) {
-			Travelplace departureAirport = config.getTravelplace(iatas[i]);
+			SqlAirport departureAirport = config.getAirports().getAirport(iatas[i]);
 			depIds[i] = departureAirport.getFullNameWithIata();
 		}
 		return depIds;
 	}
 
-	@Override
-	public void visit(Country country) {
-
-		if (country == null) {
-			generateLine("Désolé, pas de pays correspondant à votre demande");
-			return;
-		}
-		// System.out.println(country);
-
-		String countryURI = country.getDbpediaCountryUri();
-		if (countryURI != null) {
-			Element a1 = doc.createElement("a");
-			a1.setAttribute("href", countryURI);
-			a1.appendChild(doc.createTextNode(countryURI));
-			generateLine(doc.createTextNode("dbpediaCountryUri"), a1);
-		}
-
-		String capitalURI = country.getDbpediaCapitalUri();
-		if (capitalURI != null) {
-			generateAnchor(capitalURI, "dbpediaCapitalUri");
-		}
-
-		generateLine("isoName", country.getIsoName());
-		generateLine("nameEn", country.getNameEn());
-		generateLine("nameFr", country.getNameFr());
-		generateLine("xLongName", country.getxLongName());
-		generateLine("longNameEn", country.getLongNameEn());
-		generateLine("driveOn", country.getDriveOn());
-		generateLine("a2IsoCode", country.getA2IsoCode());
-		generateLine("a3UnCode", country.getA3UnCode());
-		generateLine("unNumericCode", country.getUnNumericCode());
-		generateLine("Currency Code", country.getCurrencyCode());
-		generateLine("Currency NameEn", country.getCurrencyNameEn());
-		generateLine("Currency NameFr", country.getCurrencyNameFr());
-		generateAnchor("Currency url", country.getCurrencyUrl());
-		generateLine("Currency symbol", country.getCurrencySymbol());
-		generateAnchor("Country url", country.getCountryUrl());
-		generateLine("Capital", country.getCapitalName());
-		generateAnchor("Capital url", country.getCapitalUrl());
-
-		String flag = country.getUrlFlag();
-		if (flag != null) {
-			Element a = doc.createElement("a");
-			a.setAttribute("href", flag);
-			a.appendChild(doc.createTextNode("voir le flag sur Wikipedia"));
-			Element img = doc.createElement("img");
-			img.setAttribute("src", country.getUrlFlagThumbnail());
-			generateLine(img, a);
-		}
-
-		Collection<DBPEDIA_COUNTRY_GROUP> groups = country.getGroups();
-
-		if (groups != null) {
-			visitGroups(groups);
-		}
-
-		String abstractEn = country.getAbstractEn();
-		String abstractFr = country.getAbstractFr();
-
-		if (abstractFr != null || abstractEn != null) {
-			generateTxt("Abstract_fr", abstractFr);
-			generateTxt("Abstract_en", abstractEn);
-		}
-
-	}
 
 	@Override
 	public void visit(Filter filter) {
@@ -226,63 +160,19 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 	@Override
 	public void visit(ProchainvolConfig prochainvolConfig) {
 
-		generateLine("AirPort Reader", prochainvolConfig
-				.getCurrentAirportReader().getAirportReader().name());
 		generateLine("Request Readers",
 				Arrays.toString(prochainvolConfig.getCurrentProviders()));
 		generateLine("Executor type", prochainvolConfig.getExecutorType()
 				.name());
 
-		Element a = doc.createElement("a");
-		a.setAttribute("href", Arrays.toString(RailwayStationTxtReader.source));
-		a.appendChild(doc.createTextNode("Google Fusion Table"));
-		generateLine(doc.createTextNode("Source"), a);
 		try {
 			generateLine(
-					"Nombre total de travelPlaces",
-					Integer.toString(prochainvolConfig.getTravelplace(
-							TRAVEL_PLACE_TYPE.ALL).size()));
-			generateLine(
-					"Nombre d'aéroports",
-					Integer.toString(prochainvolConfig.getTravelplace(
-							TRAVEL_PLACE_TYPE.AIRPORT).size()));
-			generateLine(
-					"Nombre de gares",
-					Integer.toString(prochainvolConfig.getTravelplace(
-							TRAVEL_PLACE_TYPE.RAILWAY_STATION).size()));
-			generateLine(
-					"Nombre de iata inconnus",
-					Integer.toString(prochainvolConfig.getTravelplace(
-							TRAVEL_PLACE_TYPE.UNKNOWN).size()));
+						"Nombre d'aéroports",
+						Integer.toString(prochainvolConfig.getAirports().getAll().size()));
 		} catch (ProchainvolException e) {
+			logger.error(e);;
 		}
 
-		// visit(config.getRapportAirportReader());
-		generateH4Line("Travel Places");
-
-		Element link = doc.createElement("a");
-		link.setAttribute("href", "GetTravelPlace?which="
-				+ TRAVEL_PLACE_TYPE.ALL.name());
-		link.appendChild(doc.createTextNode("All travel places"));
-		generateLine(doc.createTextNode("Les voir toutes en json"), link);
-
-		Element link1 = doc.createElement("a");
-		link1.setAttribute("href", "GetTravelPlace?which="
-				+ TRAVEL_PLACE_TYPE.AIRPORT.name());
-		link1.appendChild(doc.createTextNode("Airports"));
-		generateLine(doc.createTextNode("Les voir toutes en json"), link1);
-
-		Element link2 = doc.createElement("a");
-		link2.setAttribute("href", "GetTravelPlace?which="
-				+ TRAVEL_PLACE_TYPE.RAILWAY_STATION.name());
-		link2.appendChild(doc.createTextNode("Railway stations"));
-		generateLine(doc.createTextNode("Les voir toutes en json"), link2);
-
-		Element link3 = doc.createElement("a");
-		link3.setAttribute("href", "GetTravelPlace?which="
-				+ TRAVEL_PLACE_TYPE.UNKNOWN.name());
-		link3.appendChild(doc.createTextNode("iata inconnus en json"));
-		generateLine(doc.createTextNode("Voir les iata inconnus"), link3);
 
 		Element link4 = doc.createElement("a");
 		link4.setAttribute("href", "soumettre.jsp");
@@ -520,7 +410,6 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 	public void visit(TravelplaceReaderReport rapportAirportReader) {
 		generateH4Line("Rapport de chargement des aéroports");
 
-		generateLine("Source", rapportAirportReader.getWho().name());
 		generateLine("Quand", rapportAirportReader.getWhen().toString());
 		try {
 			generateLine("Temps de chargement",
@@ -533,14 +422,14 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 		int size = rapportAirportReader.getSizeResult();
 		generateLine("Nb Airports, retained", Integer.toString(size));
 
-		Map<String, List<Travelplace>> airports = rapportAirportReader
+		Map<String, List<SqlAirport>> airports = rapportAirportReader
 				.getIataDoublons();
 		if (airports != null && airports.size() > 0) {
 			generateH4Line("Iata doublons");
-			for (Entry<String, List<Travelplace>> entry : airports.entrySet()) {
+			for (Entry<String, List<SqlAirport>> entry : airports.entrySet()) {
 				StringBuffer buf = new StringBuffer("Full Names = ");
 				int i = 0;
-				for (Travelplace airport : entry.getValue()) {
+				for (SqlAirport airport : entry.getValue()) {
 					if (i != 0) {
 						buf.append(", ");
 					}
@@ -555,10 +444,10 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 		airports = rapportAirportReader.getFullNameDoublons();
 		if (airports != null && airports.size() > 0) {
 			generateH4Line("Full name doublons");
-			for (Entry<String, List<Travelplace>> entry : airports.entrySet()) {
+			for (Entry<String, List<SqlAirport>> entry : airports.entrySet()) {
 				StringBuffer buf = new StringBuffer();
 				int i = 0;
-				for (Travelplace airport : entry.getValue()) {
+				for (SqlAirport airport : entry.getValue()) {
 					if (i != 0) {
 						buf.append(", ");
 					}
@@ -588,32 +477,5 @@ public class ResponsiveVisitor extends AbstractResponsiveVisitor implements
 		}
 	}
 
-	public void visitGroups(Collection<DBPEDIA_COUNTRY_GROUP> groups) {
-		generateH4Line("dbpedia country groups for this country");
-		Element form = doc.createElement("form");
-		form.setAttribute("id", "requestForm");
-		form.setAttribute("action", "GetCountryGroup");
-		form.setAttribute("method", "get");
-		root.appendChild(form);
-		for (DBPEDIA_COUNTRY_GROUP group : groups) {
-			Element input = doc.createElement("input");
-			input.setAttribute("type", "checkbox");
-			input.setAttribute("name", "group");
-			input.setAttribute("value", group.name());
-			String groupName = group.name();
-			Set<Country> countries = Country.getAllGroups().get(groupName);
-			int size = 0;
-			if (countries != null) {
-				size = countries.size();
-			}
-			generateDeepLine(form, doc.createTextNode(groupName + "=" + size),
-					input);
-		}
-		Element submit = doc.createElement("input");
-		submit.setAttribute("type", "submit");
-		submit.setAttribute("name", "action");
-		submit.setAttribute("value", "Voir les pays des groupes");
-		generateDeepLine(form, submit);
-	}
 
 }

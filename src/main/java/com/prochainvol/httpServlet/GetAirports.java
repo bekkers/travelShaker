@@ -4,20 +4,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
 import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.Airports;
 import com.prochainvol.sql.airport.SqlAirport;
 
 /**
@@ -76,16 +75,15 @@ public class GetAirports extends HttpServlet {
 
 	private List<AirportInfo> airports = new ArrayList<AirportInfo>();
 
-	public synchronized void initAirportInfo()
+	public synchronized void initAirportInfo(ProchainvolConfig prochainvolConfig)
 			throws ServletException {
 		// TODO bug pourquoi le paramatrre session ?
 			if (airports == null) {
 				// initialisation de la table des airportInfo pour l'assistant
 				// de saisie dans l'interface
 				try {
-					for (SqlAirport airport : Airports.getInstance().getAll()
-							.values()) {
-						airports.add(new AirportInfo(airport.getIata(), airport
+					for (Entry<String, List<SqlAirport>> entry : prochainvolConfig.getAirports().getAll().entrySet()) {
+						airports.add(new AirportInfo(entry.getKey(), entry.getValue().get(0)
 								.getFullName()));
 					}
 				} catch (ProchainvolException e) {
@@ -107,7 +105,7 @@ public class GetAirports extends HttpServlet {
 
 			ProchainvolConfig prochainvolConfig = Request.getProchainvolConfig(request,
 					response, output);
-			initAirportInfo(request.getSession());
+			initAirportInfo(prochainvolConfig);
 			String result = JsonUtilities.getGson().toJson(airports);
 			response.setContentType("application/json; charset=UTF-8");
 			response.setCharacterEncoding("UTF-8");

@@ -27,49 +27,50 @@ public class SqlAirport extends ProchainvolObject implements Serializable {
 	@GeneratedValue
 	private int id;
 
-	private int openflightsid;
-	private String iata;
-	private String icao;
-	private String city;
-	private String country;
+	private int openflightsid=0;
+	private String iata="";
+	private String icao="";
+	private String city="";
+	private String country="";
 
 	@Column(name = "titre")
-	private String name;
+	private String name="";
 	@Temporal(TemporalType.DATE)
 	private Date maj = new Date();
 	/**
 	 * Hours offset from UTC. Fractional hours are expressed as decimals, eg.
 	 * India is 5.5.
 	 */
-	private Float timezone;
+	private Float timezone=0f;
 	/**
 	 * Daylight savings time. One of E (Europe), A (US/Canada), S (South
 	 * America), O (Australia), Z (New Zealand), N (None) or U (Unknown). See
 	 * also: Help: Time
 	 */
-	private String dst;
+	private String dst="";
 	/**
 	 * database time zone Timezone in "tz" (Olson) format, eg.
 	 * "America/Los_Angeles".
 	 */
-	private String tz;
-	private Float latitude;
-	private Float longitude;
+	private String tz="";
 
-	private Float altitude;
-	private Integer active;
-	private Integer size;
-	private Integer multi;
-	private String titrefr;
-	private String titrefull;
-	private String titrefullfr;
-	private String iataz;
-	private String countryfr;
-	private String cityfr;
+	private Float latitude=0f;
+	private Float longitude=0f;
 
-	private String image;
+	private Float altitude = 0f;
+	private Integer active = 1;
+	private Integer size=0;
+	private Integer multi=0;
+	private String titrefr="";
+	private String titrefull="";
+	private String titrefullfr="";
+	private String iataz="";
+	private String countryfr="";
+	private String cityfr="";
 
-	private String slug;
+	private String image="";
+
+	private String slug="";
 
 	public SqlAirport() {
 		super();
@@ -81,10 +82,15 @@ public class SqlAirport extends ProchainvolObject implements Serializable {
 	}
 
 	public SqlAirport(String nom, String ville, String etat, String iata) {
+		this(iata);
 		this.name = nom;
 		this.city = ville;
 		this.country = etat;
-		this.iata = iata;
+	}
+
+	public SqlAirport(String nom, String ville, String etat, String iata, String icao) {
+		this(nom, ville, etat, iata);
+		this.icao = icao;
 	}
 
 	public int getActive() {
@@ -293,6 +299,30 @@ public class SqlAirport extends ProchainvolObject implements Serializable {
 
 	public void setTz(String tz) {
 		this.tz = tz;
+	}
+
+	public int getOpenflightsid() {
+		return openflightsid;
+	}
+
+	public void setOpenflightsid(int openflightsid) {
+		this.openflightsid = openflightsid;
+	}
+
+	public void setTimezone(Float timezone) {
+		this.timezone = timezone;
+	}
+
+	public void setActive(Integer active) {
+		this.active = active;
+	}
+
+	public void setSize(Integer size) {
+		this.size = size;
+	}
+
+	public void setMulti(Integer multi) {
+		this.multi = multi;
 	}
 
 }

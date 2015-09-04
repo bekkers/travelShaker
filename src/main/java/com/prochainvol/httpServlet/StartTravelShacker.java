@@ -69,7 +69,7 @@ public class StartTravelShacker extends HttpServlet {
 			String remoteHost = request.getRemoteHost();
 			String remoteAddr = request.getRemoteAddr();
 			logger.info(String.format("Starting session for %s on %s, IP is %s", userName, remoteHost, remoteAddr));
-			ProchainvolConfig config = ProchainvolConfig.createDefaultProchainvolConfig();
+			ProchainvolConfig config = new ProchainvolConfig();
 			config.setUser(userName);
 			session.setAttribute(Constants.SESS_PROCHAINVOL_CONFIG, config);
 			SessionInfo sessionInfo = new SessionInfo();

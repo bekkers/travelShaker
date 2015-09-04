@@ -10,9 +10,11 @@ import javax.persistence.Query;
 
 import org.apache.log4j.Logger;
 
+import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.ProchainvolUtilities;
+import com.prochainvol.sql.AbstractSqlReader;
 
-public class SqlAirportReader extends AbstractAirportReader {
+public class SqlAirportReader extends AbstractSqlReader<Airports> {
 
 	private static final Logger logger = Logger
 			.getLogger(SqlAirportReader.class.getName());
@@ -25,8 +27,6 @@ public class SqlAirportReader extends AbstractAirportReader {
 	public Airports load() {
 		final String msg = "Reading airport persistent entities from Prochainvol DB via JPA EntityManager ";
 		logger.info(msg);
-		rapport = new TravelplaceReaderReport();
-		rapport.start();
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("airlines");
 		EntityManager em = null;
@@ -53,14 +53,13 @@ public class SqlAirportReader extends AbstractAirportReader {
 
 		
 		int nbLines = sqlAirports.size();
-		rapport.setSizeEntry(nbLines);			
 		logger.info("Nblines  = "+nbLines);
 
 		return new Airports(sqlAirports);
 
 	}
 
-	public SqlAirport read(int id) {
+	public static SqlAirport read(int id) {
 		EntityManagerFactory emf = Persistence
 				.createEntityManagerFactory("airlines");
 		EntityManager em = emf.createEntityManager();
@@ -68,6 +67,40 @@ public class SqlAirportReader extends AbstractAirportReader {
 		em.close();
 		emf.close();
 		return airport;
+	}
+
+	public static SqlAirport write(SqlAirport airport) {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("airlines");
+		EntityManager em = emf.createEntityManager();
+		em.getTransaction().begin();
+		em.persist(airport);
+		em.getTransaction().commit();
+		em.flush();
+		em.close();
+		emf.close();
+		ProchainvolConfig.getAirports().addAirport(airport);
+		return airport;
+	}
+
+	public static SqlAirport readByIata(String iata) {
+		EntityManagerFactory emf = Persistence
+				.createEntityManagerFactory("airlines");
+		EntityManager em = emf.createEntityManager();
+		Query q2 = em.createQuery("select a from SqlAirport a WHERE a.iata='" + iata + "'");
+		List<SqlAirport> listAirports = (List<SqlAirport>) q2.getResultList();
+		em.close();
+		emf.close();
+		if (listAirports==null)  {
+			return null;
+		} else if (listAirports.size() == 0) {
+			return null;
+		} else {
+			for (SqlAirport airport : listAirports) {
+				System.out.println(airport);
+			}
+			return listAirports.get(0);
+		}
 	}
 
 

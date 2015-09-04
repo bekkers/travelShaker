@@ -95,8 +95,8 @@ public class Recharger extends HttpServlet {
 				HttpSession session = request.getSession();
 				ProchainvolConfig oldProchainvolConfig = (ProchainvolConfig) session.getAttribute(
 						Constants.SESS_PROCHAINVOL_CONFIG);
-				ProchainvolConfig prochainvolConfig = new ProchainvolConfig(requestReaders.toArray(new PROVIDER[requestReaders
-								.size()]), nbStops, executorType);
+				ProchainvolConfig prochainvolConfig = new ProchainvolConfig(executorType, requestReaders.toArray(new PROVIDER[requestReaders
+								.size()]));
 				prochainvolConfig.setUser(oldProchainvolConfig.getUser());
 				logger.info(String.format("recharger prochainvolConfig = %s",
 						prochainvolConfig));

@@ -315,28 +315,6 @@ public class EditResponsiveVisitor extends AbstractResponsiveVisitor implements
 	public void visit(ProchainvolConfig prochainvolConfig) {
 		Element grid_12 = createContainerAndGrid_12();
 
-		// list of airportReaders
-		Text libelleAirPortReader = doc.createTextNode("AirPort Reader");
-
-		Element airportTable = doc.createElement("table");
-		List<AIRPORT_READER> airportReaders = Arrays.asList(AIRPORT_READER
-				.values());
-		airportReaders.forEach(r -> {
-			Element tr = doc.createElement("tr");
-			Element td = doc.createElement("td");
-			Element input = doc.createElement("input");
-			input.setAttribute("type", "radio");
-			input.setAttribute("name", "airportReader");
-			input.setAttribute("value", r.toString());
-			if (r == prochainvolConfig.getCurrentAirportReader().getAirportReader()) {
-				input.setAttribute("checked", "checked");
-			}
-			td.appendChild(input);
-			Text libelle = doc.createTextNode(" " + r.toString() + "\n");
-			td.appendChild(libelle);
-			tr.appendChild(td);
-			airportTable.appendChild(tr);
-		});
 
 		// list of providers
 		Text libelleRequestReader = doc.createTextNode("Request Reader");
@@ -395,7 +373,7 @@ public class EditResponsiveVisitor extends AbstractResponsiveVisitor implements
 		Element divMaxStops = createStopUI(prochainvolConfig.getMaxStop());
 		
 		
-		Node[][] table = { { libelleAirPortReader, airportTable },
+		Node[][] table = { 
 				{ libelleRequestReader, requestReaderTable },
 				{ libelleExecutorType, divExecutorType },
 				{ libelleMaxStops, divMaxStops } };

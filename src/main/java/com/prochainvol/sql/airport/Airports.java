@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+
+import org.apache.log4j.Logger;
 
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.ProchainvolObject;
 
 public class Airports extends ProchainvolObject {
+
+	private static final Logger logger = Logger
+			.getLogger(Airports.class.getName());
 
 	private final Map<String, List<SqlAirport>> all = new HashMap<String, List<SqlAirport>>();
 
@@ -25,6 +31,25 @@ public class Airports extends ProchainvolObject {
 
 	public void clearAll() {
 		all.clear();
+	}
+	
+	public List<String> checkAirports() {
+		List<String> result = new ArrayList<String>();
+		for (Entry<String, List<SqlAirport>> entry :all.entrySet()) {
+			if (entry.getValue().size()!=1) {
+				logger.error("airport problem with iata "+entry.getKey()+" : "+entry.getValue().size());
+				result.add(entry.getKey());
+			}
+		}
+		return result;
+	}
+	
+	public SqlAirport getAirport(String iata) {
+		List<SqlAirport> airport = all.get(iata);
+		if (airport == null) {
+			return null;
+		}
+		return airport.get(0);
 	}
 
 	public void addAirport(SqlAirport airport) {

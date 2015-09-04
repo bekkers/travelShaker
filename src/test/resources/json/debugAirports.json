@@ -7,6 +7,7 @@
         "iata": "ORY",
         "city": "Paris",
         "country": "France",
+     "active": 1,
         "name": "Orly",
         "maj": "28 Aug 2015 07:47:14 CEST"
       }
@@ -18,6 +19,7 @@
         "iata": "CDG",
         "city": "Paris",
         "country": "France",
+    "active": 1,
         "name": "Charles De Gaulle",
         "maj": "28 Aug 2015 07:47:14 CEST"
       },
@@ -27,6 +29,7 @@
         "iata": "CDG",
         "city": "Paris",
         "country": "France",
+     "active": 1,
         "name": "toto",
         "maj": "28 Aug 2015 07:47:14 CEST"
       }
@@ -38,6 +41,7 @@
         "iata": "LON",
         "city": "London",
         "country": "United Kingdom",
+    "active": 1,
         "name": "London all ariports",
         "maj": "28 Aug 2015 07:47:14 CEST"
       }
@@ -50,6 +54,7 @@
         "icao": "LFML",
         "city": "Marseille",
         "country": "France",
+     "active": 1,
         "name": "Provence",
         "maj": "28 Aug 2015 07:47:14 CEST",
         "timezone": 1.0,

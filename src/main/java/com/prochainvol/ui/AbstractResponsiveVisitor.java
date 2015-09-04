@@ -132,9 +132,6 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		// génération de la ligne de configuration
 		ProchainvolConfig prochainvolConfig = prochainvolHeader.getConfig();
 		generateLine(
-				"Airports Source : "
-						+ prochainvolConfig.getCurrentAirportReader()
-								.getAirportReader().name(),
 				"Providers : "
 						+ Arrays.toString(prochainvolConfig
 								.getCurrentProviders()),

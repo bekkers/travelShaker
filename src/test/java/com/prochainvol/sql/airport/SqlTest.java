@@ -35,7 +35,7 @@ public class SqlTest {
 	@Test
 	public void testGetAirport() {
 		try {
-			ProchainvolConfig config = new ProchainvolConfig();
+			//ProchainvolConfig config = new ProchainvolConfig();
 		} catch (Exception e) {
 			JunitConstants.reportError(e);
 		}
@@ -78,7 +78,7 @@ public class SqlTest {
 			List<SqlAirport> sqlAirports1 = (List<SqlAirport>) q1.getResultList();
 			assertEquals(1, sqlAirports1.size());
 			SqlAirport marseille = sqlAirports1.get(0);
-			System.out.println("Marseille Provence=" + marseille);
+			// System.out.println("Marseille Provence=" + marseille);
 			assertEquals(cityMarseille, marseille.getCity());
 
 			// read by iata : Orly
@@ -101,6 +101,13 @@ public class SqlTest {
 			assertEquals(1, sqlAirports4.size());
 			SqlAirport london = sqlAirports4.get(0);
 			// System.out.println("london=" + london);
+
+			// read by iata : tulza
+			Query q5 = em.createQuery("select a from SqlAirport a WHERE a.iata='TLZ'");
+			List<SqlAirport> sqlAirports5 = (List<SqlAirport>) q5.getResultList();
+			assertEquals(1, sqlAirports5.size());
+			SqlAirport tulza = sqlAirports5.get(0);
+			System.out.println("tulza=" + tulza);
 
 			SqlAirport[] airports = { agen, marseille, orly, cdg, london };
 			System.out.println("airports=" + JsonUtilities.getGsonPretty().toJson(airports));

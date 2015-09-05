@@ -75,8 +75,9 @@ public class SqlAirportReader extends AbstractSqlReader<Airports> {
 		EntityManager em = emf.createEntityManager();
 		em.getTransaction().begin();
 		em.persist(airport);
-		em.getTransaction().commit();
 		em.flush();
+		
+		em.getTransaction().commit();
 		em.close();
 		emf.close();
 		ProchainvolConfig.getAirports().addAirport(airport);

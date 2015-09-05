@@ -103,13 +103,13 @@ public class SqlTest {
 			// System.out.println("london=" + london);
 
 			// read by iata : tulza
-			Query q5 = em.createQuery("select a from SqlAirport a WHERE a.iata='TLZ'");
+			Query q5 = em.createQuery("select a from SqlAirport a WHERE a.iata='YMU'");
 			List<SqlAirport> sqlAirports5 = (List<SqlAirport>) q5.getResultList();
 			assertEquals(1, sqlAirports5.size());
-			SqlAirport tulza = sqlAirports5.get(0);
-			System.out.println("tulza=" + tulza);
+			SqlAirport Mansons = sqlAirports5.get(0);
+			// System.out.println("Mansons Landing=" + Mansons);
 
-			SqlAirport[] airports = { agen, marseille, orly, cdg, london };
+			SqlAirport[] airports = { agen, marseille, orly, cdg, london, Mansons };
 			System.out.println("airports=" + JsonUtilities.getGsonPretty().toJson(airports));
 
 			em.getTransaction().commit();

@@ -7,7 +7,6 @@ import org.joda.time.DateTime;
 
 import com.prochainvol.api.request.RequestParams;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.TobeAddedAirportReader;
 
 public class TestConstants {
 
@@ -61,5 +60,6 @@ public class TestConstants {
 		System.out.println("getOneMonthToGoRequestParamsAsJson() "+buf.toString());
 		return buf.toString();
 	}
+	
 
 }

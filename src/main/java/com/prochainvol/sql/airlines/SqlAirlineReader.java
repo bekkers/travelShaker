@@ -22,13 +22,14 @@ public class SqlAirlineReader extends AbstractSqlReader<AirlineCompanies> {
 
 	@Override
 	public AirlineCompanies load() {
-		final String msg = "Reading airport persistent entities from Prochainvol DB via JPA EntityManager ";
+		final String msg = "Reading AirlineCompanies persistent entities from Prochainvol DB via JPA EntityManager ";
 		logger.info(msg);
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("airlines");
+		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		List<AirlineCompany> sqlAirlineCompanies = null;
 		try {
+			emf = Persistence
+					.createEntityManagerFactory("airlines");
 			em = emf.createEntityManager();
 			// Begin a new local transaction so that we can persist a new entity
 			em.getTransaction().begin();
@@ -43,6 +44,8 @@ public class SqlAirlineReader extends AbstractSqlReader<AirlineCompanies> {
 		} finally {
 			if (em!=null)
 				em.close();
+			if (emf!=null)
+				emf.close();
 
 		}
 		

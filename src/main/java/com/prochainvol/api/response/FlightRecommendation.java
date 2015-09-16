@@ -42,15 +42,7 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 	private IFlight flight;
 	private final Float price;
 	private String url;
-	private Date outboundDate;
 
-	private Date inboundDate;
-
-
-	private String outboundIata;
-	
-	
-	private String inboundIata;
 	public FlightRecommendation(PROVIDER flightSource, IFlight flight,
 			Float price, String url) {
 		super();
@@ -77,16 +69,6 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 				return false;
 		} else if (!flight.equals(other.flight))
 			return false;
-		if (inboundDate == null) {
-			if (other.inboundDate != null)
-				return false;
-		} else if (!inboundDate.equals(other.inboundDate))
-			return false;
-		if (outboundDate == null) {
-			if (other.outboundDate != null)
-				return false;
-		} else if (!outboundDate.equals(other.outboundDate))
-			return false;
 		if (price == null) {
 			if (other.price != null)
 				return false;
@@ -109,12 +91,6 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 	}
 
 	
-	public Date getInboundDate() {
-		return inboundDate;
-	}
-	public String getInboundIata() {
-		return inboundIata;
-	}
 	public int getInboundStop() {
 		return flight.getGoingStops();
 	}
@@ -129,13 +105,7 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 			return 0;
 		}
 	}
-	public Date getOutboundDate() {
-		return outboundDate;
-	}
 
-	public String getOutboundIata() {
-		return outboundIata;
-	}
 
 
 	public int getOutboundStop() {
@@ -163,10 +133,6 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((flight == null) ? 0 : flight.hashCode());
-		result = prime * result
-				+ ((inboundDate == null) ? 0 : inboundDate.hashCode());
-		result = prime * result
-				+ ((outboundDate == null) ? 0 : outboundDate.hashCode());
 		result = prime * result + ((price == null) ? 0 : price.hashCode());
 		return result;
 	}
@@ -193,30 +159,19 @@ public class FlightRecommendation extends ProchainvolObject implements IAffichab
 	}
 
 
-	public void setInboundDate(Date inboundDate) {
-		this.inboundDate = inboundDate;
-	}
 
 
-	public void setInboundIata(String inboundIata) {
-		this.inboundIata = inboundIata;
-	}
-	
-	public void setOutboundDate(Date outboundDate) {
-		this.outboundDate = outboundDate;
-	}
-
-
-	public void setOutboundIata(String outboundIata) {
-		this.outboundIata = outboundIata;
-	}
-	
 	public void setSubSource(String subSource) {
 		this.subSource = subSource;
 	}
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public String toShortString() {
+		StringBuffer buff = new StringBuffer();
+		buff.append(this.getFlightSource()).append("/").append(this.getSubSource());
+		return buff.toString();
 	}
 
 

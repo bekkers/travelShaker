@@ -13,25 +13,24 @@ import org.apache.log4j.Logger;
 import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.ProchainvolUtilities;
 import com.prochainvol.sql.AbstractSqlReader;
+import com.prochainvol.sql.SqlAirport;
 
 public class SqlAirportReader extends AbstractSqlReader<Airports> {
 
 	private static final Logger logger = Logger
 			.getLogger(SqlAirportReader.class.getName());
 
-	public SqlAirportReader() {
-		super();
-	}
-
+	@Override
 	@SuppressWarnings("unchecked")
 	public Airports load() {
 		final String msg = "Reading airport persistent entities from Prochainvol DB via JPA EntityManager ";
 		logger.info(msg);
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("airlines");
+		EntityManagerFactory emf = null;
 		EntityManager em = null;
 		List<SqlAirport> sqlAirports = null;
 		try {
+			emf = Persistence
+					.createEntityManagerFactory("airlines");
 			em = emf.createEntityManager();
 			// Begin a new local transaction so that we can persist a new entity
 			em.getTransaction().begin();
@@ -46,6 +45,8 @@ public class SqlAirportReader extends AbstractSqlReader<Airports> {
 		} finally {
 			if (em!=null)
 				em.close();
+			if (emf!=null)
+				emf.close();
 
 		}
 
@@ -59,50 +60,22 @@ public class SqlAirportReader extends AbstractSqlReader<Airports> {
 
 	}
 
-	public static SqlAirport read(int id) {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("airlines");
-		EntityManager em = emf.createEntityManager();
-		SqlAirport airport = em.find(SqlAirport.class, id);
-		em.close();
-		emf.close();
-		return airport;
+	public static SqlAirport  read(int id) {
+		return AbstractSqlReader.read(SqlAirport.class, id);
 	}
-
-	public static SqlAirport write(SqlAirport airport) {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("airlines");
-		EntityManager em = emf.createEntityManager();
-		em.getTransaction().begin();
-		em.persist(airport);
-		em.flush();
-		
-		em.getTransaction().commit();
-		em.close();
-		emf.close();
-		ProchainvolConfig.getAirports().addAirport(airport);
-		return airport;
-	}
-
+	
 	public static SqlAirport readByIata(String iata) {
-		EntityManagerFactory emf = Persistence
-				.createEntityManagerFactory("airlines");
-		EntityManager em = emf.createEntityManager();
-		Query q2 = em.createQuery("select a from SqlAirport a WHERE a.iata='" + iata + "'");
-		List<SqlAirport> listAirports = (List<SqlAirport>) q2.getResultList();
-		em.close();
-		emf.close();
-		if (listAirports==null)  {
-			return null;
-		} else if (listAirports.size() == 0) {
-			return null;
-		} else {
-			for (SqlAirport airport : listAirports) {
-				System.out.println(airport);
-			}
-			return listAirports.get(0);
+		List<SqlAirport> list = AbstractSqlReader.query("select a from SqlAirport a WHERE a.iata='" + iata + "'");
+		if (list.size()>1) {
+			logger.warn("oops, plusieurs airports avec le même iata : "+iata);
 		}
+		return list.get(0);
 	}
 
+
+	public static void write(SqlAirport airport) {
+		AbstractSqlReader.write(airport);
+		ProchainvolConfig.getAirports().addAirport(airport);
+	}
 
 }

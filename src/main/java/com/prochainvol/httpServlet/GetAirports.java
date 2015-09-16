@@ -17,7 +17,7 @@ import org.apache.log4j.Logger;
 import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.SqlAirport;
+import com.prochainvol.sql.SqlAirport;
 
 /**
  * fournit la liste des aéroports avec leurs Iata et leur fullname.
@@ -81,15 +81,10 @@ public class GetAirports extends HttpServlet {
 			if (airports == null) {
 				// initialisation de la table des airportInfo pour l'assistant
 				// de saisie dans l'interface
-				try {
 					for (Entry<String, List<SqlAirport>> entry : prochainvolConfig.getAirports().getAll().entrySet()) {
 						airports.add(new AirportInfo(entry.getKey(), entry.getValue().get(0)
 								.getFullName()));
 					}
-				} catch (ProchainvolException e) {
-					logger.fatal("impossible d'initialiser les aéroports : " +e.getMessage());
-					throw new ServletException(e);
-				}
 			}
 
 	}

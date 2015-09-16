@@ -63,3 +63,4 @@ login.properties
 *.war
 *.ear
 /target/
+/chargement.log

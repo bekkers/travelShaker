@@ -13,7 +13,22 @@ public class RequestResultUnit extends ProchainvolObject implements IAffichable 
 	protected List<FlightRecommendation> recommendations;
 	protected ReportUnit reportUnit;
 	Route route;
-
+	
+	
+	public String toShortString() {
+		StringBuffer buff = new StringBuffer();
+		if (route!=null) {
+			buff.append(route.toShortString());
+		}
+		int i =0;
+		for (FlightRecommendation flightRecommendation : recommendations) {
+			i++;
+			buff.append("\n\t").append(i+". ").append(flightRecommendation.toShortString());
+			IFlight flight = flightRecommendation.getFlight();
+			buff.append(" ").append(flight.toShortString());
+		}
+		return buff.toString();
+	}
 	
 	public Route getRoute() {
 		return route;

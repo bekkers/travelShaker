@@ -341,31 +341,6 @@ public class EditResponsiveVisitor extends AbstractResponsiveVisitor implements
 			requestReaderTable.appendChild(tr);
 		});
 
-		// ExecutorType
-		Text libelleExecutorType = doc.createTextNode("Executor Type");
-
-		Element divExecutorType = doc.createElement("div");
-		Element executorTable = doc.createElement("table");
-		List<EXECUTOR_TYPE> executors = Arrays.asList(EXECUTOR_TYPE
-				.values());
-		executors.forEach(r -> {
-			Element tr = doc.createElement("tr");
-			Element td = doc.createElement("td");
-			Element input = doc.createElement("input");
-			input.setAttribute("type", "radio");
-			input.setAttribute("name", "executorType");
-			input.setAttribute("value", r.toString());
-			if (r == prochainvolConfig.getExecutorType()) {
-				input.setAttribute("checked", "checked");
-			}
-			td.appendChild(input);
-			Text libelle = doc.createTextNode(" " + r.toString() + "\n");
-			td.appendChild(libelle);
-			tr.appendChild(td);
-			executorTable.appendChild(tr);
-		});
-		divExecutorType.appendChild(executorTable);
-
 
 		// Max stops
 		Text libelleMaxStops = doc.createTextNode("Max Stops");
@@ -375,7 +350,6 @@ public class EditResponsiveVisitor extends AbstractResponsiveVisitor implements
 		
 		Node[][] table = { 
 				{ libelleRequestReader, requestReaderTable },
-				{ libelleExecutorType, divExecutorType },
 				{ libelleMaxStops, divMaxStops } };
 
 		grid_12.appendChild(putIntoHtmlForm(table, "Recharger"));

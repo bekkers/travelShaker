@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.ProchainvolObject;
+import com.prochainvol.sql.SqlAirport;
 import com.prochainvol.ui.IAffichable;
 import com.prochainvol.ui.IAffichableVisitor;
 

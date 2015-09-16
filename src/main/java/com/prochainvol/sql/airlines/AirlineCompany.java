@@ -1,6 +1,9 @@
 package com.prochainvol.sql.airlines;
 
 import java.io.Serializable;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.util.List;
 
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
@@ -27,6 +30,7 @@ import javax.persistence.Table;
 
 import org.apache.log4j.Logger;
 
+import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.ProchainvolObject;
 
 @SuppressWarnings("serial")
@@ -189,5 +193,80 @@ public class AirlineCompany extends ProchainvolObject implements Serializable {
 		this.openflightId = openflightId;
 	}
 
+	public String diff(AirlineCompany other) throws ProchainvolException {
+		StringBuffer buff = new StringBuffer();
+		Field[] fields = AirlineCompany.class.getDeclaredFields();
+		try {
+			for (Field field : fields) {
+				if (!Modifier.isStatic(field.getModifiers())) {
+					fieldDiff(other, buff, field);
+				}
+			}
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			logger.fatal(e.getMessage());
+			throw new ProchainvolException(e);
+		}
+		return buff.length()==0 ? null : buff.insert(0, name+" :\n").toString();
+	}
 
+	public String diff(AirlineCompany other, List<String> xFieldNames) throws ProchainvolException {
+		StringBuffer buff = new StringBuffer();
+		Field[] fields = AirlineCompany.class.getDeclaredFields();
+		try {
+			for (Field field : fields) {
+				if (!Modifier.isStatic(field.getModifiers()) && !contains(xFieldNames, field.getName())) {
+					fieldDiff(other, buff, field);
+				}
+			}
+		} catch (IllegalArgumentException | IllegalAccessException e) {
+			logger.fatal(e.getMessage());
+			throw new ProchainvolException(e);
+		}
+		return buff.length()==0 ? null : buff.insert(0, getKey()+" "+name+" :\n").toString();
+	}
+
+	public void fieldDiff(AirlineCompany other, StringBuffer buff, Field field)
+			throws IllegalAccessException {
+		String name = this.getName();
+		String otherName = other.getName();
+		if (name == null) {
+			name = "??";
+		}
+		if (otherName == null) {
+			otherName = "???";
+		}
+		if (field.getName().equals("id")) {
+		} else if (field.getName().equals("openflightId")) {
+			int thisValue = (int) field.get(this);
+			int otherValue = (int) field.get(other);
+			if (thisValue!= otherValue) {
+				buff.append(String.format("%s::%d::%d\n",
+					field.getName(), thisValue, otherValue));
+		}
+		} else {
+			String thisValue = (String) field.get(this);
+			if (thisValue == null) {
+				thisValue = "null";
+			}
+			String otherValue = (String) field.get(other);
+			if (otherValue == null) {
+				otherValue = "null";
+			}
+			if (!thisValue.equals(otherValue)) {
+					buff.append(String.format("%s::%s::%s\n",
+						field.getName(), thisValue, otherValue));
+			}
+		}
+	}
+
+	private boolean contains(List<String> xFieldNames, String name2) {
+		boolean result = false;
+		for (String s : xFieldNames) {
+			if (s.equals(name2)) {
+				result = true;
+				break;
+			}
+		}
+		return result;
+	}
 }

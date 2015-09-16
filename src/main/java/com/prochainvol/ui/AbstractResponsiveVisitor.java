@@ -22,14 +22,13 @@ import com.prochainvol.dom.DomUtilities;
 
 public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 
-	private static final Logger logger = Logger
-			.getLogger(AbstractResponsiveVisitor.class.getName());
+	private static final Logger logger = Logger.getLogger(AbstractResponsiveVisitor.class.getName());
 
 	protected Document doc;
 	protected Element root;
 	protected final ProchainvolConfig config;
 
-	public AbstractResponsiveVisitor(ProchainvolConfig config2)  {
+	public AbstractResponsiveVisitor(ProchainvolConfig config2) {
 		super();
 		DocumentBuilder builder = null;
 		try {
@@ -49,8 +48,7 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		return doc;
 	}
 
-	public String getDocumentAsString() throws TransformerException,
-			ProchainvolException {
+	public String getDocumentAsString() throws TransformerException, ProchainvolException {
 		if (doc == null) {
 			String msg = "Impossible de sérialiser, document null";
 			logger.fatal(msg);
@@ -59,8 +57,7 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		return DomUtilities.domToString(doc);
 	}
 
-	public String getDocumentAsString(boolean indent)
-			throws TransformerException {
+	public String getDocumentAsString(boolean indent) throws TransformerException {
 		return DomUtilities.domToString(doc, indent);
 	}
 
@@ -107,15 +104,20 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		heardersGrid2.setAttribute("class", "grid_2");
 		headersContainer12.appendChild(heardersGrid2);
 
-		Element divName = doc.createElement("div");
-		divName.appendChild(doc.createTextNode("User : " + config.getUser()
-				+ " "));
-		Element disconnect = doc.createElement("a");
-		disconnect.setAttribute("href", "Disconnect");
-		disconnect.setTextContent("Se déconnecter");
-		divName.appendChild(disconnect);
-
-		heardersGrid2.appendChild(divName);
+		if (config != null) {
+			String user = config.getUser();
+			if (user != null) {
+				Element divName = doc.createElement("div");
+				divName.appendChild(doc.createTextNode("User : " + config.getUser()));
+				Element br = doc.createElement("br");
+				divName.appendChild(br);
+				Element disconnect = doc.createElement("a");
+				disconnect.setAttribute("href", "Disconnect");
+				disconnect.setTextContent("Se déconnecter");
+				divName.appendChild(disconnect);
+				heardersGrid2.appendChild(divName);
+			}
+		}
 
 		if (prochainvolHeader.isHomeButton()) {
 			Element divForm = doc.createElement("div");
@@ -130,29 +132,25 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 
 		}
 		// génération de la ligne de configuration
-		ProchainvolConfig prochainvolConfig = prochainvolHeader.getConfig();
-		generateLine(
-				"Providers : "
-						+ Arrays.toString(prochainvolConfig
-								.getCurrentProviders()),
-				String.format("Default Stops : %s, Executor type : %s", prochainvolConfig.getDefaultStop(),
-				prochainvolConfig.getExecutorType().name()));
+		if (config != null) {
+			generateLine("Providers : " + Arrays.toString(config.getCurrentProviders()),
+					String.format("Default Stops : %s, Executor type : %s", config.getDefaultStop(),
+							config.getExecutorType().name()));
+		}
 
 		// génération du trait de séparation horizontal
 		Element sepContainer = doc.createElement("div");
 		sepContainer.setAttribute("class", "container_12");
 		root.appendChild(sepContainer);
-
 		Element sepGrid12 = doc.createElement("div");
 		sepGrid12.setAttribute("class", "grid_12");
 		sepContainer.appendChild(sepGrid12);
-
 		Element sepDiv = doc.createElement("div");
 		sepDiv.setAttribute("class", "top-separator");
 		sepDiv.appendChild(doc.createTextNode("   "));
 		sepGrid12.appendChild(sepDiv);
-	}
 
+	}
 
 	void generateAnchor(String value, String url) {
 		if (url == null) {
@@ -207,30 +205,24 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 	}
 
 	Element generateHtmlTable(Node... nodes) {
-		List<List<Node>> lines = Arrays.stream(nodes)
-				.map(r -> Arrays.asList(r)).collect(Collectors.toList());
+		List<List<Node>> lines = Arrays.stream(nodes).map(r -> Arrays.asList(r)).collect(Collectors.toList());
 		return generateHtmlTable(lines);
 	}
 
 	Element generateHtmlTable(Node[][] values) {
-		List<List<Node>> lines = Arrays.stream(values)
-				.map(r -> Arrays.asList(r)).collect(Collectors.toList());
+		List<List<Node>> lines = Arrays.stream(values).map(r -> Arrays.asList(r)).collect(Collectors.toList());
 		return generateHtmlTable(lines);
 	}
 
 	Element generateHtmlTable(String... nodes) {
-		List<List<Node>> lines = Arrays.stream(nodes)
-				.map(s -> Arrays.asList((Node) doc.createTextNode(s)))
+		List<List<Node>> lines = Arrays.stream(nodes).map(s -> Arrays.asList((Node) doc.createTextNode(s)))
 				.collect(Collectors.toList());
 		return generateHtmlTable(lines);
 	}
 
 	Element generateHtmlTable(String[][] table) {
-		List<List<Node>> lines = Arrays
-				.stream(table)
-				.map(l -> Arrays.asList(l).stream()
-						.map(s -> (Node) doc.createTextNode(s))
-						.collect(Collectors.toList()))
+		List<List<Node>> lines = Arrays.stream(table)
+				.map(l -> Arrays.asList(l).stream().map(s -> (Node) doc.createTextNode(s)).collect(Collectors.toList()))
 				.collect(Collectors.toList());
 		return generateHtmlTable(lines);
 	}
@@ -312,8 +304,7 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		generateLine(text1, text2, text3);
 	}
 
-	void generateLine(String value1, String value2, String value3,
-			String[] gridFormat) {
+	void generateLine(String value1, String value2, String value3, String[] gridFormat) {
 		if (value1 == null || value1.length() == 0)
 			value1 = "_";
 		if (value2 == null || value2.length() == 0)
@@ -365,8 +356,7 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 	}
 
 	void generateTxt(String title, String txt) {
-		if (txt == null || title == null || txt.length() == 0
-				|| title.length() == 0)
+		if (txt == null || title == null || txt.length() == 0 || title.length() == 0)
 			return;
 		generateH4Line(title);
 		Element p = doc.createElement("p");
@@ -374,8 +364,7 @@ public class AbstractResponsiveVisitor implements IResponsiveVisitor {
 		generateLine(p);
 	}
 
-	private void generateDeepLine(Node rootNode, Node node1, Node node2,
-			String[] gridFormat) {
+	private void generateDeepLine(Node rootNode, Node node1, Node node2, String[] gridFormat) {
 		Element mainContainer = doc.createElement("div");
 		mainContainer.setAttribute("class", "container_12");
 		rootNode.appendChild(mainContainer);

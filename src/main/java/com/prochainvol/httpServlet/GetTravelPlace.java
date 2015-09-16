@@ -13,7 +13,7 @@ import org.apache.log4j.Logger;
 import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.SqlAirport;
+import com.prochainvol.sql.SqlAirport;
 
 @WebServlet("/GetTravelPlace")
 public class GetTravelPlace extends HttpServlet {

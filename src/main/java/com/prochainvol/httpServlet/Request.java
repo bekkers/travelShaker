@@ -237,7 +237,7 @@ public class Request extends HttpServlet {
 			logger.trace("params = " + params);
 			requestResults = prochainvolConfig.request(params);
 			ProchainvolHeader prochainvolHeader = new ProchainvolHeader(
-					"Rapport de Requête", prochainvolConfig, true);
+					"Rapport de Requête", true);
 			ProchainvolObject[] affichables = { params, requestResults };
 			String typeParamName = "output";
 			String type = request.getParameter(typeParamName);

@@ -14,8 +14,8 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.prochainvol.JunitConstants;
-import com.prochainvol.ProchainvolConfig;
 import com.prochainvol.json.JsonUtilities;
+import com.prochainvol.sql.SqlAirport;
 
 public class SqlTest {
 

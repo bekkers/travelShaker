@@ -84,5 +84,22 @@ public class OneWayFlight extends ProchainvolObject implements IFlight {
 		throw new UnsupportedOperationException(String.format(UNSUPORTED_ERROR_MESSAGE, "setReturnPath"));
 	}
 
+	@Override
+	public String toShortString() {
+		StringBuffer buff = new StringBuffer();
+		List<Path> pathList = this.getGoingPath();
+		buff.append("[");
+		int i=0;
+		for (Path path : pathList) {
+			if (i!=0) {
+				buff.append(", ");
+			}
+			i++;
+			buff.append(path.toShortString());
+		}
+		buff.append("]");
+		return buff.toString();
+	}
+
 
 }

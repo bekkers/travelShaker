@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import com.prochainvol.ProchainvolException;
 import com.prochainvol.json.ProchainvolObject;
+import com.prochainvol.sql.SqlAirport;
 
 public class Airports extends ProchainvolObject {
 
@@ -27,6 +28,7 @@ public class Airports extends ProchainvolObject {
 		for (SqlAirport airport : airports) {
 			addAirport(airport);
 		}
+		logger.info("airports : list size = "+airports.size()+", map size = "+all.size());
 	}
 
 	public void clearAll() {
@@ -35,12 +37,15 @@ public class Airports extends ProchainvolObject {
 	
 	public List<String> checkAirports() {
 		List<String> result = new ArrayList<String>();
+		int i = 0;
 		for (Entry<String, List<SqlAirport>> entry :all.entrySet()) {
 			if (entry.getValue().size()!=1) {
 				logger.error("airport problem with iata "+entry.getKey()+" : "+entry.getValue().size());
 				result.add(entry.getKey());
+				i++;
 			}
 		}
+		logger.info("number of airport entries with size not equals 1 = "+i);
 		return result;
 	}
 	
@@ -64,7 +69,7 @@ public class Airports extends ProchainvolObject {
 		}
 	}
 
-	public Map<String, List<SqlAirport>> getAll() throws ProchainvolException {
+	public Map<String, List<SqlAirport>> getAll() {
 		return all;
 	}
 

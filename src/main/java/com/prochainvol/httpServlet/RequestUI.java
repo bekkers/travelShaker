@@ -53,7 +53,7 @@ public class RequestUI extends HttpServlet {
 			EditResponsiveVisitor visitor = new EditResponsiveVisitor(
 					prochainvolConfig);
 			ProchainvolHeader prochainvolHeader = new ProchainvolHeader(
-					"Try a Request", prochainvolConfig, true);
+					"Try a Request", true);
 			prochainvolHeader.accept(visitor); // entête
 			Date date1 = null;
 			Date date2 = null;

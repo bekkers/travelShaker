@@ -1,6 +1,5 @@
 package com.prochainvol.api.provider;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,8 +53,7 @@ public abstract class AbstractAnswerBuilder<I, O> {
 			RequestParams requestParams, ReportUnit rapportRequete,
 			List<FlightRecommendation> recommendations)
 			throws ProchainvolException {
-		logger.trace("rapportRequete = "+rapportRequete);
-		logger.trace("recommendations = "+recommendations);
+		logger.trace("nb recommendations = "+recommendations.size());
 
 		rapportRequete.setNbRecommendationsRecues(recommendations.size());
 		if (recommendations.size() > 0) {
@@ -68,25 +66,6 @@ public abstract class AbstractAnswerBuilder<I, O> {
 					.collect(Collectors.minBy(new PriceComp())).get();
 			rapportRequete.setMinPrice(minPrice);
 
-			// trace des stops aller
-			List<String> goingStops = recommendations.stream().map(r -> {
-				return Integer.toString(r.getNbStopsAller());
-			}).collect(Collectors.toList());
-			logger.info(String.format(
-					"nb recommendations = %d, nbStopsAller = %s",
-					recommendations.size(), Arrays.toString(goingStops
-							.toArray(new String[goingStops.size()]))));
-
-			// trace des stops retour
-			List<String> returnStops = recommendations.stream()
-					.filter(r -> r.isReturnFlight()).map(r -> {
-						return Integer.toString(r.getNbStopsRetour());
-					}).collect(Collectors.toList());
-			if (returnStops.size() > 0) {
-				logger.info(String.format("nbStopsReturn = %s", Arrays
-						.toString(returnStops.toArray(new String[returnStops
-								.size()]))));
-			}
 
 		}
 		// calcul du nombre des recommandations avec stops
@@ -117,6 +96,7 @@ public abstract class AbstractAnswerBuilder<I, O> {
 			logger.trace("directFlightsOnMoveAndReturn.size() = " + size);
 		}
 		rapportRequete.setNbDirectAllerRetour(size);
+		logger.trace("rapportRequete = "+rapportRequete);
 		
 		Filter filter = config.getCurrentFlightFilters();
 //		System.out.println(filter);

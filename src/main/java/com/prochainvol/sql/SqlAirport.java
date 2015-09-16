@@ -1,4 +1,4 @@
-package com.prochainvol.sql.airport;
+package com.prochainvol.sql;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -26,52 +26,52 @@ public class SqlAirport extends ProchainvolObject implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;
+	protected int id;
 
-	private int openflightsid=0;
-	private String iata="";
-	private String icao="";
-	private String city="";
-	private String country="";
+	protected int openflightsid=0;
+	protected String iata="";
+	protected String icao="";
+	protected String city="";
+	protected String country="";
 
 	@Column(name = "titre")
-	private String name="";
+	protected String name="";
 	@Temporal(TemporalType.DATE)
-	private Date maj = new Date();
+	protected Date maj = new Date();
 	/**
 	 * Hours offset from UTC. Fractional hours are expressed as decimals, eg.
 	 * India is 5.5.
 	 */
-	private Float timezone=0f;
+	protected Float timezone=0f;
 	/**
 	 * Daylight savings time. One of E (Europe), A (US/Canada), S (South
 	 * America), O (Australia), Z (New Zealand), N (None) or U (Unknown). See
 	 * also: Help: Time
 	 */
-	private String dst="";
+	protected String dst="";
 	/**
 	 * database time zone Timezone in "tz" (Olson) format, eg.
 	 * "America/Los_Angeles".
 	 */
-	private String tz="";
+	protected String tz="";
 
-	private Float latitude=0f;
-	private Float longitude=0f;
+	protected Float latitude=0f;
+	protected Float longitude=0f;
 
-	private Float altitude = 0f;
-	private Integer active = 1;
-	private Integer size=0;
-	private Integer multi=0;
-	private String titrefr="";
-	private String titrefull="";
-	private String titrefullfr="";
-	private String iataz="";
-	private String countryfr="";
-	private String cityfr="";
+	protected Float altitude = 0f;
+	protected Integer active = 1;
+	protected Integer size=0;
+	protected Integer multi=0;
+	protected String titrefr="";
+	protected String titrefull="";
+	protected String titrefullfr="";
+	protected String iataz="";
+	protected String countryfr="";
+	protected String cityfr="";
 
-	private String image="";
+	protected String image="";
 
-	private String slug="";
+	protected String slug="";
 
 	public SqlAirport() {
 		super();

@@ -82,20 +82,24 @@ public class OdigeoAnswerBuilder extends
 			List<SearchStatusResponse> airSearchResponses,
 			RequestParams requestParams, Date startDate)
 			throws ProchainvolException {
+		// itération sur toutes les réponses
 		
 		List<RequestResultUnit> results = new ArrayList<RequestResultUnit>();
+		int i = 0;
 		for (SearchStatusResponse reponse :airSearchResponses) {
 			long startTime = System.nanoTime();
-			RequestResultUnit rapportRequete = buildProchainvolAnswer(
+			RequestResultUnit requestResultUnit = buildProchainvolAnswer(
 					reponse, requestParams, new Date());
-			logger.trace("rapportRequete = "+rapportRequete);
+			i++;
+			List<FlightRecommendation> flightRecommendations = requestResultUnit.getRecommendations();
+
+			logger.trace("buildProchainvolAnswer requestResultUnit"+i+".recommendations.size = "+flightRecommendations.size());
 			Gson gson = JsonUtilities.getGsonPretty();
 			long mediumTime = System.nanoTime();
-			List<FlightRecommendation> flightRecommendationMap = new ArrayList<FlightRecommendation>();
 			RequestResultUnit searchStatusResponse = filterRecommendations(
 					requestParams,
-					rapportRequete.getReportUnit(),
-					flightRecommendationMap);
+					requestResultUnit.getReportUnit(),
+					flightRecommendations);
 			long endTime = System.nanoTime();
 			ReportUnit requestReportUnit = searchStatusResponse.getReportUnit();
 			requestReportUnit.setDuréeHttp((mediumTime - startTime) / 1000000); // durées
@@ -103,8 +107,6 @@ public class OdigeoAnswerBuilder extends
 																				// ms
 			requestReportUnit.setDuréeAnalyse((endTime - mediumTime) / 1000000);
 			results.add(searchStatusResponse);
-			System.out.println("------------------------>\n"
-					+ gson.toJson(searchStatusResponse));
 		}
 		return results;
 	}
@@ -115,7 +117,7 @@ public class OdigeoAnswerBuilder extends
 			Date startDate) throws ProchainvolException {
 
 		List<FlightRecommendation> flightRecommendationMap = new ArrayList<FlightRecommendation>();
-		logger.trace("SearchStatusResponse = " + gson.toJson(response));
+//		logger.trace("SearchStatusResponse = " + gson.toJson(response));
 
 		// Preferences for the current response, including language and currency
 		// as mentioned above.
@@ -266,6 +268,7 @@ public class OdigeoAnswerBuilder extends
 							.getFirstSegmentsIds();
 
 					if (requestParams.getTravelType() == TravelType.ONE_WAY) {
+						logger.trace("nb one way = "+firstSegmentsIds.size());
 						for (Integer segmentId : firstSegmentsIds) {
 							Segment segment = segmentMap.get(segmentId);
 
@@ -277,6 +280,7 @@ public class OdigeoAnswerBuilder extends
 						}
 
 					} else {
+						logger.trace("nb d'allés = "+firstSegmentsIds.size());
 						for (Integer segmentId : firstSegmentsIds) {
 							Segment segmentAller = segmentMap.get(segmentId);
 
@@ -284,6 +288,7 @@ public class OdigeoAnswerBuilder extends
 							// route.
 							List<Integer> secondSegmentsIds = fareItinerary
 									.getSecondSegmentsIds();
+							logger.trace("nb de retours = "+secondSegmentsIds.size());
 							for (Integer segmentRetourId : secondSegmentsIds) {
 								// brasser les allers avec les retours
 								Segment segmentRetour = segmentMap
@@ -304,6 +309,7 @@ public class OdigeoAnswerBuilder extends
 					// List of segments for the third part of the route.
 					List<Integer> thirdSegmentsIds = fareItinerary
 							.getThirdSegmentsIds();
+					logger.trace("nb de third parts = "+thirdSegmentsIds.size());
 
 				}
 
@@ -434,15 +440,15 @@ public class OdigeoAnswerBuilder extends
 
 	public String makeDeepLink(String localClickOutUrl, ODIGEO_PROVIDER provider) {
 		String route = localClickOutUrl.replaceFirst(regExpr, "$1");
-		logger.trace("route = " + route);
+//		logger.trace("route = " + route);
 		localClickOutUrl = localClickOutUrl.replaceFirst("utm_campaign=",
 				"utm_campaign=" + Constants.ODIGEO_PARTID + "-").replaceFirst(
 				"utm_content=meta\\-fr", "utm_content=metasearch-10");
 		String format = provider.getFormat().replaceFirst("=XXX", "=" + route);
-		logger.trace("format = " + format.replace("&", "&\n"));
+//		logger.trace("format = " + format.replace("&", "&\n"));
 
 		String result = format + localClickOutUrl;
-		logger.trace("deeplink = " + result.replace("&", "&\n"));
+//		logger.trace("deeplink = " + result.replace("&", "&\n"));
 		return result;
 	}
 

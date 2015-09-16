@@ -105,6 +105,12 @@ public class Path extends ProchainvolObject implements Serializable {
 		this.Route = new Route(departureAirportItata, arrivalAirportItata);
 	}
 
+	public String toShortString() {
+		StringBuffer buff = new StringBuffer();
+		buff.append(this.getCarrierIataCode()).append(":").append(this.getRoute().toShortString());
+		return buff.toString();
+	}
+
 
 
 

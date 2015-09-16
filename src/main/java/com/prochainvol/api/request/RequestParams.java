@@ -35,7 +35,7 @@ public class RequestParams extends ProchainvolObject implements IAffichable, IEd
 	private String departureTime = Constants.DEFAULT_TIME;
 	private String returnTime = Constants.DEFAULT_TIME;
 	private TravelType travelType;
-	private int adults;
+	private int adults = 1;
 	private int children;
 	private int infants;
 	private boolean withReportUnit = false;
@@ -309,12 +309,14 @@ public class RequestParams extends ProchainvolObject implements IAffichable, IEd
 
 	private String[] getIatas(String iataAsString) throws ProchainvolException {
 		String[] result = new String[1];
-		if (iataAsString.matches("^[A-Z0-9]{3}$")) {
+		if (iataAsString==null) {
+			result = new String[0];
+		} else if (iataAsString.matches("^[A-Z0-9]{3}$")) {
 			result[0] = iataAsString;			
 		} else if (iataAsString.matches(Constants.iataRegExpr))  {
 			result[0] = iataAsString.replaceFirst(Constants.iataRegExpr, "$1");
 		} else if (iataAsString.matches(Constants.multipleIataRegExpr)) {
-			result = iataAsString.split(";");
+			result = iataAsString.split(",");
 		} else {
 			throw new ProchainvolException("Incorrect list of airport arrivals : "+(iataAsString==null ? "null" : iataAsString));
 		}

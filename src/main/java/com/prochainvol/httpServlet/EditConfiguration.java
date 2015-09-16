@@ -47,7 +47,7 @@ public class EditConfiguration extends HttpServlet {
 		try {
 			EditResponsiveVisitor visitor = new EditResponsiveVisitor(prochainvolConfig);
 			ProchainvolHeader prochainvolHeader = new ProchainvolHeader(
-					"Edit Configuration", prochainvolConfig, true);
+					"Edit Configuration", true);
 			prochainvolHeader.accept(visitor); // entête
 			prochainvolConfig.accept(visitor);
 			PrintWriter out = response.getWriter();

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
 import org.apache.log4j.Logger;
 
 import com.prochainvol.api.EXECUTOR_TYPE;
@@ -15,7 +19,10 @@ import com.prochainvol.api.request.filter.Filter;
 import com.prochainvol.api.request.filter.MaxStopPredicate;
 import com.prochainvol.api.response.RequestResult;
 import com.prochainvol.api.response.RequestResultUnit;
+import com.prochainvol.csv.airlines.OpenflightAirlineReader;
+import com.prochainvol.csv.airport.OpenflightCsvAirportReader;
 import com.prochainvol.json.ProchainvolObject;
+import com.prochainvol.sql.SqlAirport;
 import com.prochainvol.sql.airlines.AirlineCompanies;
 import com.prochainvol.sql.airlines.SqlAirlineReader;
 import com.prochainvol.sql.airport.Airports;
@@ -27,25 +34,40 @@ import com.prochainvol.ui.IAffichableVisitor;
 import com.prochainvol.ui.IEditable;
 import com.prochainvol.ui.IEditableVisitor;
 
-public class ProchainvolConfig extends ProchainvolObject implements
-		IAffichable, IEditable {
+public class ProchainvolConfig extends ProchainvolObject implements IAffichable, IEditable {
 
-	private static final Logger logger = Logger
-			.getLogger(ProchainvolConfig.class.getName());
+	private static final Logger logger = Logger.getLogger(ProchainvolConfig.class.getName());
 
-	private static final String version = Constants.PROCHAINVOL_PROPS.getProperty(
-			"version");
+	private final static boolean IS_SQL = sqlIsConnected();
 
-	static private final Airports airports = new SqlAirportReader().load();
+	static private final Airports airports;
 
-	static private final AirlineCompanies airlineCompanies = new SqlAirlineReader().load();
+	static private final AirlineCompanies airlineCompanies;
 
-	static private final Routes routes = new SqlRouteReader().load();
-	
+	static private final Routes routes;
+
 	static {
-		airports.checkAirports();
-		airlineCompanies.checkAirlineCompanies();
-		routes.checkRoutes();
+		if (IS_SQL) {
+			airports = new SqlAirportReader().load();
+			List<String> errs = airports.checkAirports();
+			logger.info("nb of airports errors = " + errs.size());
+
+			airlineCompanies = new SqlAirlineReader().load();
+			errs = airlineCompanies.checkAirlineCompanies();
+			logger.info("nb of airlines errors = " + errs.size());
+
+			routes = new SqlRouteReader().load();
+			errs = routes.checkRoutes();
+			logger.info("nb of airroutes errors = " + errs.size());
+
+		} else {
+			airports = new OpenflightCsvAirportReader().load();
+			List<String> errs = airports.checkAirports();
+			logger.info("nb of airports errors = " + errs.size());
+			
+			airlineCompanies = new OpenflightAirlineReader().load();
+			routes = new Routes();
+}
 	}
 
 	public static AirlineCompanies getAirlinecompanies() {
@@ -60,6 +82,27 @@ public class ProchainvolConfig extends ProchainvolObject implements
 		return routes;
 	}
 
+	private static boolean sqlIsConnected() {
+		EntityManagerFactory emf = null;
+		EntityManager em = null;
+		List<SqlAirport> sqlAirports = null;
+		boolean result = true;
+		try {
+			emf = Persistence.createEntityManagerFactory("airlines");
+			em = emf.createEntityManager();
+		} catch (Exception e) {
+			result = false;
+		} finally {
+			if (em != null)
+				em.close();
+			if (emf != null)
+				emf.close();
+
+		}
+		logger.info("IsSql = " + result);
+		return result;
+	}
+
 	private String user;
 	private boolean async = false;
 
@@ -69,27 +112,23 @@ public class ProchainvolConfig extends ProchainvolObject implements
 
 	private int maxStop;
 
-	public ProchainvolConfig()
-			throws ProchainvolException {
+	public ProchainvolConfig() throws ProchainvolException {
 		this(Constants.DEFAULT_EXECUTOR_TYPE);
 	}
-	public ProchainvolConfig(EXECUTOR_TYPE executorType)
-			throws ProchainvolException {
+
+	public ProchainvolConfig(EXECUTOR_TYPE executorType) throws ProchainvolException {
 		this(executorType, Constants.DEFAULT_PROVIDERS);
 	}
-	public ProchainvolConfig(EXECUTOR_TYPE executorType2, 
-			PROVIDER[] provider)
-			throws ProchainvolException {
-		this.executorType = executorType2;
-		this.maxStop = Constants.DEFAULT_MAX_STOPS;
-		this.currentProviders = provider;
 
-		logger.debug(String
-				.format("Creating Prochainvol configuration, requestReaders = %s",
-						Arrays.toString(getCurrentProviders())));
+	public ProchainvolConfig(EXECUTOR_TYPE executorType2, PROVIDER[] provider) throws ProchainvolException {
+		this.executorType = executorType2;
+		this.currentProviders = provider;
+		this.maxStop = Constants.DEFAULT_MAX_STOPS;
+
+		logger.debug(String.format("Creating Prochainvol configuration, requestReaders = %s",
+				Arrays.toString(getCurrentProviders())));
 	}
 
-	
 	@Override
 	public void accept(IAffichableVisitor visitor) {
 		visitor.visit(this);
@@ -99,12 +138,10 @@ public class ProchainvolConfig extends ProchainvolObject implements
 		visitor.visit(this);
 	}
 
-
-	
 	public AirlineCompanies getAirlineCompanies() {
 		return airlineCompanies;
 	}
-	
+
 	public Filter getCurrentFlightFilters() {
 		return currentFlightFilters;
 	}
@@ -120,9 +157,6 @@ public class ProchainvolConfig extends ProchainvolObject implements
 	public EXECUTOR_TYPE getExecutorType() {
 		return executorType;
 	}
-	
-
-
 
 	public int getMaxStop() {
 		return maxStop;
@@ -132,19 +166,11 @@ public class ProchainvolConfig extends ProchainvolObject implements
 		return user;
 	}
 
-	public String getVersion() {
-		return version;
-	}
-
-
-
 	public boolean isAsync() {
 		return async;
 	}
 
-
-	public RequestResult request(
-			RequestParams params) throws ProchainvolException {
+	public RequestResult request(RequestParams params) throws ProchainvolException {
 		List<RequestResultUnit> results = new ArrayList<RequestResultUnit>();
 		for (PROVIDER provider : currentProviders) {
 			AbstractAirlineService service = createService(provider);
@@ -157,9 +183,6 @@ public class ProchainvolConfig extends ProchainvolObject implements
 	public void setAsync(boolean async) {
 		this.async = async;
 	}
-
-
-
 
 	public void setCurrentFlightFilters(Filter flightFlilters) {
 		this.currentFlightFilters = flightFlilters;
@@ -177,8 +200,7 @@ public class ProchainvolConfig extends ProchainvolObject implements
 		this.user = user;
 	}
 
-	private AbstractAirlineService createService(PROVIDER provider)
-			throws ProchainvolException {
+	private AbstractAirlineService createService(PROVIDER provider) throws ProchainvolException {
 		AbstractAirlineService service = null;
 		switch (provider) {
 		case ODIGEO:
@@ -192,6 +214,5 @@ public class ProchainvolConfig extends ProchainvolObject implements
 			currentFlightFilters.addPredicate(new MaxStopPredicate(i));
 		}
 	}
-
 
 }

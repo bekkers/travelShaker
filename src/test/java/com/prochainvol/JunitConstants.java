@@ -16,8 +16,7 @@ import com.prochainvol.api.response.FlightRecommendation;
 import com.prochainvol.api.response.Path;
 import com.prochainvol.api.response.RequestResultUnit;
 import com.prochainvol.json.JsonUtilities;
-import com.prochainvol.sql.airport.TobeAddedAirportReader;
-import com.prochainvol.sql.airport.SqlAirport;
+import com.prochainvol.sql.SqlAirport;
 
 public class JunitConstants {
 
@@ -119,11 +118,6 @@ public class JunitConstants {
 		}
 	}
 	
-	public static RequestParams getDebugRequestParams() throws ProchainvolException {
-		// utilisé en mode debug pour des appels à la main
-		String fileName = Constants.PROCHAINVOL_PROPS.getProperty("debugRequestParamsFilename");
-		return JsonUtilities.readFromInputStream(RequestParams.class, fileName );
-	}
 
 
 	private JunitConstants() {

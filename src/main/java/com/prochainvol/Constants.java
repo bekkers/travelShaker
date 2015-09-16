@@ -11,6 +11,8 @@ import org.apache.log4j.Logger;
 import com.prochainvol.api.EXECUTOR_TYPE;
 import com.prochainvol.api.TravelType;
 import com.prochainvol.api.provider.PROVIDER;
+import com.prochainvol.api.request.RequestParams;
+import com.prochainvol.json.JsonUtilities;
 
 public class Constants {
 
@@ -22,7 +24,11 @@ public class Constants {
     public static final Properties PROCHAINVOL_PROPS = ProchainvolUtilities
 			.loadProperties(PROCHAINVOL_PROPS_FILE_NAME);
 
-    public static final String LINUX_IP_ADDRESS= PROCHAINVOL_PROPS.getProperty(
+	public static final String API_VERSION = Constants.PROCHAINVOL_PROPS.getProperty("version");
+	public static final String API_NAME = "TravelShaker";
+	public static final String API_TITLE = API_NAME + " API admin v" + API_VERSION;
+
+   public static final String LINUX_IP_ADDRESS= PROCHAINVOL_PROPS.getProperty(
 			"linuxIpAdress");
 
     public static Float DEFAULT_MAX_PRICE_RATIO;
@@ -53,7 +59,7 @@ public class Constants {
 			shortDateFormat, Locale.FRANCE);
 
 	public static final String iataRegExpr = "^\\(([A-Z0-9]{3})\\).*$";
-	public static final String multipleIataRegExpr = "^([A-Z0-9]{3})(\\;[A-Z0-9]{3}))*$";
+	public static final String multipleIataRegExpr = "^([A-Z0-9]{3})(\\,[A-Z0-9]{3})*$";
 	
 	public static final boolean IS_WINDOWS = OSValidator.isWindows();
 	public static final EXECUTOR_TYPE DEFAULT_EXECUTOR_TYPE = Constants.IS_WINDOWS ? EXECUTOR_TYPE.BAM
@@ -92,7 +98,6 @@ public class Constants {
 	static {
 		String maxStopAsString = PROCHAINVOL_PROPS
 				.getProperty("defaultMaxStops");
-		System.out.println("maxStopAsString = '"+maxStopAsString+"'");
 					
 		if (maxStopAsString == null || maxStopAsString.equals("-1")) {
 			DEFAULT_MAX_STOPS = -1;
@@ -105,6 +110,14 @@ public class Constants {
 			logger.fatal(mess);
 			throw new ProchainvolRuntimeException(mess);
 		}
+		logger.info("Constants initialized - DEFAULT_MAX_STOPS = '"+DEFAULT_MAX_STOPS+"'");
 
 	}
+	
+	public static RequestParams getDebugRequestParams() throws ProchainvolException {
+		// utilisé en mode debug pour des appels à la main
+		String fileName = Constants.PROCHAINVOL_PROPS.getProperty("debugRequestParamsFilename");
+		return JsonUtilities.readFromInputStream(RequestParams.class, fileName );
+	}
+
 }

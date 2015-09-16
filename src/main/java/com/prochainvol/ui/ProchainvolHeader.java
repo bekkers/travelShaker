@@ -13,15 +13,13 @@ public class ProchainvolHeader extends ProchainvolObject implements IResponsive,
 
 	private boolean isHomeButton = false;
 
-	private final ProchainvolConfig config;
-	public ProchainvolHeader(String title, ProchainvolConfig config) {
+	public ProchainvolHeader(String title) {
 		super();
 
 		this.title = title;
-		this.config = config;
 	}
-	public ProchainvolHeader(String title, ProchainvolConfig config, boolean isHomeButton) {
-		this(title, config);
+	public ProchainvolHeader(String title, boolean isHomeButton) {
+		this(title);
 		this.isHomeButton = isHomeButton;
 	}
 
@@ -37,9 +35,6 @@ public class ProchainvolHeader extends ProchainvolObject implements IResponsive,
         visitor.visit(this);
 	}
 
-	public ProchainvolConfig getConfig() {
-		return config;
-	}
 
 	public String getImage() {
 		return image;

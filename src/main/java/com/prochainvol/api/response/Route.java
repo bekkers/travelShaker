@@ -5,23 +5,30 @@ import java.util.Date;
 import com.prochainvol.json.ProchainvolObject;
 
 public class Route extends ProchainvolObject {
-	
+
 	private String departureAirportIata;
 
 	private String arrivalAirportIata;
 
 	private Date lastUse;
 	private int counter;
+
 	public Route() {
 		super();
 	}
+
 	public Route(String departureAirport, String arrivalAirport) {
 		this.departureAirportIata = departureAirport;
 		this.arrivalAirportIata = arrivalAirport;
 		lastUse = new Date();
 	}
 
-	
+	public String toShortString() {
+		StringBuffer buff = new StringBuffer();
+		buff.append(this.getDepartureAirportIata()).append(":").append(this.getArrivalAirportIata());
+		return buff.toString();
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -43,7 +50,7 @@ public class Route extends ProchainvolObject {
 			return false;
 		return true;
 	}
-	
+
 	public String getArrivalAirportIata() {
 		return arrivalAirportIata;
 	}
@@ -56,7 +63,7 @@ public class Route extends ProchainvolObject {
 		return departureAirportIata;
 	}
 
-	public String getKey () {
+	public String getKey() {
 		return String.format("%s:%s", departureAirportIata, arrivalAirportIata);
 	}
 
@@ -68,11 +75,8 @@ public class Route extends ProchainvolObject {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((arrivalAirportIata == null) ? 0 : arrivalAirportIata.hashCode());
-		result = prime
-				* result
-				+ ((departureAirportIata == null) ? 0 : departureAirportIata.hashCode());
+		result = prime * result + ((arrivalAirportIata == null) ? 0 : arrivalAirportIata.hashCode());
+		result = prime * result + ((departureAirportIata == null) ? 0 : departureAirportIata.hashCode());
 		return result;
 	}
 

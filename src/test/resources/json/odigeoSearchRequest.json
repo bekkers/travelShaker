@@ -1,0 +1,39 @@
+{
+  "preferences": {
+    "locale": "fr_FR",
+    "userAgent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.116 Safari/537.36",
+    "domainCode": ".fr",
+    "realUserIP": "46.31.194.10"
+  },
+  "searchRequest": {
+    "itinerarySearchRequest": {
+      "segmentRequests": [
+        {
+          "departure": {
+            "iataCode": "MRS"
+          },
+          "destination": {
+            "iataCode": "LON"
+          },
+          "date": "2015-07-02"
+        },
+        {
+          "departure": {
+            "iataCode": "LON"
+          },
+          "destination": {
+            "iataCode": "MRS"
+          },
+          "date": "2015-07-16"
+        }
+      ],
+      "cabinClass": "TOURIST",
+      "numAdults": 1,
+      "numChildren": 0,
+      "numInfants": 0,
+      "directFlightsOnly": true
+    },
+    "maxSize": 5
+  },
+  "metasearchEngineCode": "5b21cce3fe877c13cdb60c25b4885"
+}

@@ -1,0 +1,13 @@
+{
+  "stops": 0,
+  "maxprice": 0.05,
+  "departureAirportIata": ["LON"],
+  "arrivalAirportIata": ["DUB"],
+  "departureDate": "27 May 2015 07:23:27 CET",
+  "departureTime": "ANY",
+  "returnTime": "ANY",
+  "travelType": "ONE_WAY",
+  "adults": 1,
+  "children": 0,
+  "infants": 0
+}

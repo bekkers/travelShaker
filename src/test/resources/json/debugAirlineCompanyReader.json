@@ -1,0 +1,20 @@
+{
+  "all": {
+    "FR": [
+      {
+        "id": 0,
+        "openflightId": 0,
+        "name": "Ryanair",
+        "iata": "FR"
+      }
+    ],
+    "TO": [
+      {
+        "id": 0,
+        "openflightId": 0,
+        "name": "Transavia France",
+        "iata": "TO"
+      }
+    ]
+  }
+}

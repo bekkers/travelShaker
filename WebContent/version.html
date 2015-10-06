@@ -1,0 +1,85 @@
+<div>
+	<h4>Version 0.9</h4>
+	<ol>
+		<li>
+		Nouveau provider Odigeo
+		</li>
+	</ol>	
+	<h4>Version 0.7</h4>
+	<ol>
+		<li>Acces protégé par mot de passe (trois utilisateurs 'thomas',
+			'pratt' et 'travelshaker')<br /> On peut se logger de deux manières
+			:
+			<ul>
+				<li>Pour les utilisateurs qui ne sont pas 'travelshaker', par
+					une page de login classique. <br />URL =
+					http://prochainvol.com:8080/airlines. <br />Durée de la session =
+					3mn. <br />En réponse on reçoit la page d'acceuil de l'admin
+					travelshaker
+				</li>
+				<li>Pour l'utilisateur 'travelshaker'. <br />URL =
+					http://prochainvol.com::8080/airlines/StartTravelShacker. <br />Durée
+					de la session = 12h. <br />En réponse, si tout se passe bien, on
+					reçoit le json {"response":"ok"}, sinon erreur.
+				</li>
+			</ul>
+		</li>
+		<li>Filtres en parametre des requetes</li>
+		<li>En plus de ceux de la v0.6, ajout du provider 'budgetair' (Il
+			est bloqué pour l'instant au lancement de l'api Travelshacker, car
+			budgetair répond 'non autorisé' ... à voir ...)</li>
+		<li>Bug sur les iata inconnus. <br />Réglée pour l'instant en
+			mémorisant seulement dans l'api travelshaker, pour la durée de vie de
+			l'api (sans rémanence dans la base), les nouveaux iata rencontrés,
+			qui ont été envoyés par les providers
+		</li>
+		<li>Introduction des objets de type "TravelPlace" avec trois sous
+			types les "Airport", les "RailwayStation" et les "ferry terminals".<br />
+			<img src="images/travelPlaces.jpg" />
+		</li>
+		<li>Récupération sur le web d'un certain nombre de gares, voir <a
+			href="https://www.google.com/fusiontables/DataSource?docid=1DY7TLusym-ZAk5odXdklOjY49Uq_btHhUU9Aqc_9#rows:id=1">https://www.google.com/fusiontables/DataSource?docid=1DY7TLusym-ZAk5odXdklOjY49Uq_btHhUU9Aqc_9#rows:id=1</a>
+			d'un certain nombre de
+		<li>Collecte des informations sur les aéroports fournies en
+			arrière plans des réponses envoyées par les providers (idem que pour
+			les iata, pas de rémanence dans la base)</li>
+		<li>Introduction des objets 'country' référencés par les
+			'travelplace'. <br />
+		<img src="images/country.jpg" /> <br />Trois sources de récupération
+			<ul>
+				<li>Wikipedia (semi manuellement par extraction en java des
+					informations d'une table html recupérée par copie manuelle)<a
+					href="http://fr.wikipedia.org/wiki/ISO_3166-1">http://fr.wikipedia.org/wiki/ISO_3166-1</a>
+				</li>
+				<li>Wikipedia (semi manuellement par extraction en java des
+					informations d'une table html recupérée par copie manuelle)<a
+					href="http://en.wikipedia.org/wiki/ISO_3166-1">http://en.wikipedia.org/wiki/ISO_3166-1</a>
+				</li>
+				<li>Dbpedia (automatiquement par requète sparql depuis java sur
+					le site dbpedia endpoint) <a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a>
+					ou bien <a href="http://dbpedia.org/snorql/">http://dbpedia.org/snorql/</a>
+				</li>
+			</ul> Les deux tableaux wikipedia permettent de récupérer en deux temps de
+			l'information sur 249 pays appartenants à l'ONU. Sur wikipedia, par
+			sparql on complête l'information pour 183 pays (parmi les 249 déjà
+			connus). <br />Parmis ces nouvelles information on trouve un
+			abstract sur le pays en français et en anglais, mais aussi des
+			informations éventuelles en plus (si celle-ci est présente dans
+			dbpedia). Par exemple s'il conduisent à droite ou à gauche ; leur
+			monnaie ; leur capitale ... <br />On trouve aussi un classement de
+			185 pays répartis en 65 groupes définis par dbpedia. <br />Voici les
+			65 groupes actuels sous dbpedia : <a
+			href="http://dbpedia.org/snorql/?query=prefix+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0Aprefix+yago%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F%3E%0D%0ASELECT+distinct+%3Ftype+%0D%0Awhere+{%0D%0A%09%3Fcountry+a+yago%3AMemberStatesOfTheUnitedNations+%3B%0D%0A%09%09a+dbo%3ACountry+%3B%0D%0A%09%09a+%3Ftype.%0D%0A%09FILTER+regex%28str%28%3Ftype%29%2C+%22^http%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F.*Countries%22%29+%0D%0A}+%0D%0A"
+			target="_blank">Rechercher les groupes en sparql sur dbpedia</a> <br />Voici
+			les 185 pays ayant actuellement un groupe sous dbpedia : <a
+			href="http://dbpedia.org/snorql/?query=prefix+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0Aprefix+yago%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F%3E%0D%0ASELECT+distinct+%3Fcountry+%3Ftype+%0D%0Awhere+{%0D%0A%09%3Fcountry+a+yago%3AMemberStatesOfTheUnitedNations+%3B%0D%0A%09%09a+dbo%3ACountry+%3B%0D%0A%09%09a+%3Ftype.%0D%0A%09FILTER+regex%28str%28%3Ftype%29%2C+%22^http%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F.*Countries%22%29+%0D%0A}+order+by+%3Fcountry%0D%0A"
+			target="_blank">Rechercher les pays ayant un groupe sur dbpedia</a>
+		</li>
+	</ol>
+	<h4>Version 0.6</h4>
+	<ol>
+		<li>Deux providers 'opodo' old version, 'edreams' old version.</li>
+		<li>Structure de l'Api v06<br /> <img src="images/api-v06.jpg" />
+		</li>
+	</ol>
+</div>

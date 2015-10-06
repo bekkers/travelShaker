@@ -1,0 +1,14 @@
+{
+  "stops": -1,
+  "departureAirportIata": ["LYS"],
+  "arrivalAirportIata": ["RAK"],
+  "departureDate": "14 Aug 2015 00:00:00 CEST",
+  "returnDate": "16 Aug 2015 00:00:00 CEST",
+  "departureTime": "ANY",
+  "returnTime": "ANY",
+  "travelType": "RETURN",
+  "adults": 1,
+  "children": 0,
+  "infants": 0,
+  "withReportUnit": false
+}

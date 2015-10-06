@@ -1,0 +1,554 @@
+{
+  "itineraryResultsPages": [
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 361.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1,
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 384.00
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            5
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 384.00
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            4
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 408.03
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,1A,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            5
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 408.03
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,1A,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://www.edreams.fr/engine/waitPage/waitingPage.jsp?returnTime\u003d0000\u0026testToken\u003d1%234924749817-2%231674-3%233128-4%2337738-5%23542734181-6%2364962-7%2380579-8%236331340594-9%233010789651-10%236030320971-11%2317382257284-12%2317382257402-13%2317382257408-14%2317382257420-15%2317382257426\u0026departureDate\u003d14%2F08%2F2015\u0026mktportal\u003dpublicideesMeta\u0026testTokenDate\u003d2015-08-11T10%3A03%3A23\u0026toLocale\u003dfr_FR\u0026departureTime\u003d0000\u0026cabinClassName\u003dTOURIST\u0026searchId\u003d15839779835\u0026departureLocation\u003dLYS\u0026numChilds\u003d0\u0026numAdults\u003d1\u0026returnDate\u003d16%2F08%2F2015\u0026tripTypeName\u003dROUND_TRIP\u0026numInfants\u003d0\u0026resident\u003dfalse\u0026landingPageType\u003dPASSENGER\u0026action\u003dengine%2FItinerarySearch%2Fsearch\u0026searchMainProductTypeName\u003dFLIGHT\u0026filterDirectFlights\u003dfalse\u0026arrivalLocation\u003dRAK\u0026utm_campaign\u003dLYS-RAK\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "ED"
+    },
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 360.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1,
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 376.50
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            4
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 390.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            5
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 399.53
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,1A,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            5
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 399.53
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,1A,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            3
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://www.govoyages.com/landingsearchmeta.aspx?adt\u003d1\u0026all_ret\u003doui\u0026bb\u003d0\u0026cls\u003deco\u0026directFlight\u003dfalse\u0026dte_dep\u003d2015-08-14\u0026dte_ret\u003d2015-08-16\u0026enf\u003d0\u0026landingPageType\u003dRESULT\u0026lng\u003dfr\u0026mktportal\u003dpublicideesMeta\u0026reset\u003dtrue\u0026resident\u003dfalse\u0026searchId\u003d15839779826\u0026testToken\u003d1%233048-2%23153-3%231751-4%238522-5%23542734181-6%2311856-7%2348-8%2312580724771-9%232742029426-10%232742029437-11%2317382257284-12%2317546331335-13%2317382257408-14%2317382257420-15%2317382257426\u0026testTokenDate\u003d2015-08-11T10%3A03%3A23\u0026typ\u003dflight\u0026vil_arr\u003dRAK\u0026vil_dep\u003dLYS\u0026utm_campaign\u003dLYS-RAK\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "GV"
+    },
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 363.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 363.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            6
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 363.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            7
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 363.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 363.56
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,1A",
+          "resident": false,
+          "firstSegmentsIds": [
+            7
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://billetavion.opodo.fr/opodo/flights/searchRedirect?returnTime\u003d0000\u0026testToken\u003d1%231750244858-2%231414-3%235881-4%2356902-5%23542672092-6%2391005-7%2321148-8%232746029136-9%232742029426-10%237072068933-11%2317382257284-12%2317382257402-13%2317382257408-14%2317382257420-15%2317382257426\u0026departureDate\u003d14%2F08%2F2015\u0026mktportal\u003dpublicideesMeta\u0026toLocale\u003dfr_FR\u0026testTokenDate\u003d2015-08-11T10%3A03%3A23\u0026departureTime\u003d0000\u0026cabinClassName\u003dTOURIST\u0026searchId\u003d15839779824\u0026departureLocation\u003dLYS\u0026numChilds\u003d0\u0026numAdults\u003d1\u0026tripTypeName\u003dROUND_TRIP\u0026returnDate\u003d16%2F08%2F2015\u0026numInfants\u003d0\u0026resident\u003dfalse\u0026landingPageType\u003dPASSENGER\u0026action\u003dengine%2FItinerarySearch%2Fsearch\u0026searchMainProductTypeName\u003dFLIGHT\u0026reset\u003dtrue\u0026filterDirectFlights\u003dfalse\u0026arrivalLocation\u003dRAK\u0026utm_campaign\u003dLYS-RAK\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "OP"
+    }
+  ],
+  "legend": {
+    "carriers": [
+      {
+        "code": "TO",
+        "name": "Transavia France"
+      },
+      {
+        "code": "AT",
+        "name": "Royal Air Maroc"
+      }
+    ],
+    "locations": [
+      {
+        "geoNodeId": 394,
+        "cityName": "Casablanca",
+        "name": "Mohamed V",
+        "type": "Airport",
+        "iataCode": "CMN",
+        "cityIataCode": "CAS",
+        "countryCode": "MA",
+        "countryName": "Maroc"
+      },
+      {
+        "geoNodeId": 1563,
+        "cityName": "Marrakech ",
+        "name": "Menara",
+        "type": "Airport",
+        "iataCode": "RAK",
+        "cityIataCode": "RAK",
+        "countryCode": "MA",
+        "countryName": "Maroc"
+      },
+      {
+        "geoNodeId": 1143,
+        "cityName": "Lyon",
+        "name": "Saint Exupery",
+        "type": "Airport",
+        "iataCode": "LYS",
+        "cityIataCode": "LYS",
+        "countryCode": "FR",
+        "countryName": "France"
+      }
+    ],
+    "sectionResults": [
+      {
+        "section": {
+          "id": "721",
+          "fromGeoNodeId": 1143,
+          "departureDate": "2015-08-14T17:05:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 394,
+          "arrivalDate": "2015-08-14T18:55:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "73G",
+          "duration": 170
+        },
+        "id": 0
+      },
+      {
+        "section": {
+          "id": "413",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-14T22:50:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 1563,
+          "arrivalDate": "2015-08-14T23:30:00",
+          "arrivalTerminal": "1",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 40
+        },
+        "id": 1
+      },
+      {
+        "section": {
+          "id": "400",
+          "fromGeoNodeId": 1563,
+          "departureDate": "2015-08-16T06:15:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 394,
+          "arrivalDate": "2015-08-16T06:55:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 40
+        },
+        "id": 2
+      },
+      {
+        "section": {
+          "id": "718",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-16T08:05:00",
+          "departureTerminal": "2",
+          "toGeoNodeId": 1143,
+          "arrivalDate": "2015-08-16T11:45:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 160
+        },
+        "id": 3
+      },
+      {
+        "section": {
+          "id": "412",
+          "fromGeoNodeId": 1563,
+          "departureDate": "2015-08-16T19:05:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 394,
+          "arrivalDate": "2015-08-16T19:45:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 40
+        },
+        "id": 4
+      },
+      {
+        "section": {
+          "id": "722",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-17T16:55:00",
+          "departureTerminal": "2",
+          "toGeoNodeId": 1143,
+          "arrivalDate": "2015-08-17T20:35:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 160
+        },
+        "id": 5
+      },
+      {
+        "section": {
+          "id": "3914",
+          "fromGeoNodeId": 1143,
+          "departureDate": "2015-08-14T07:00:00",
+          "toGeoNodeId": 1563,
+          "arrivalDate": "2015-08-14T09:05:00",
+          "carrierCode": "TO",
+          "duration": 185
+        },
+        "id": 6
+      },
+      {
+        "section": {
+          "id": "3915",
+          "fromGeoNodeId": 1563,
+          "departureDate": "2015-08-16T09:20:00",
+          "toGeoNodeId": 1143,
+          "arrivalDate": "2015-08-16T13:15:00",
+          "carrierCode": "TO",
+          "duration": 175
+        },
+        "id": 7
+      },
+      {
+        "section": {
+          "id": "720",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-17T12:25:00",
+          "departureTerminal": "2",
+          "toGeoNodeId": 1143,
+          "arrivalDate": "2015-08-17T16:05:00",
+          "arrivalTerminal": "2",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "738",
+          "duration": 160
+        },
+        "id": 8
+      },
+      {
+        "section": {
+          "id": "403",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-15T12:00:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 1563,
+          "arrivalDate": "2015-08-15T12:55:00",
+          "arrivalTerminal": "1",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "AT7",
+          "duration": 55
+        },
+        "id": 9
+      },
+      {
+        "section": {
+          "id": "411",
+          "fromGeoNodeId": 394,
+          "departureDate": "2015-08-15T17:40:00",
+          "departureTerminal": "1",
+          "toGeoNodeId": 1563,
+          "arrivalDate": "2015-08-15T18:35:00",
+          "arrivalTerminal": "1",
+          "carrierCode": "AT",
+          "cabinClass": "ECONOMIC_DISCOUNTED",
+          "aircraft": "AT7",
+          "duration": 55
+        },
+        "id": 10
+      }
+    ],
+    "segmentResults": [
+      {
+        "segment": {
+          "sectionIds": [
+            0,
+            1
+          ],
+          "key": "0,AT721,AT413",
+          "carrierCode": "AT",
+          "duration": 445,
+          "seats": 5
+        },
+        "id": 0
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            2,
+            3
+          ],
+          "key": "0,AT400,AT718",
+          "carrierCode": "AT",
+          "duration": 270,
+          "seats": 1
+        },
+        "id": 1
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            4,
+            5
+          ],
+          "key": "0,AT412,AT722",
+          "carrierCode": "AT",
+          "duration": 1470,
+          "seats": 3
+        },
+        "id": 2
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            6
+          ],
+          "key": "0,TO3914",
+          "carrierCode": "TO",
+          "duration": 185
+        },
+        "id": 3
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            7
+          ],
+          "key": "0,TO3915",
+          "carrierCode": "TO",
+          "duration": 175
+        },
+        "id": 4
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            4,
+            8
+          ],
+          "key": "0,AT412,AT720",
+          "carrierCode": "AT",
+          "duration": 1200,
+          "seats": 1
+        },
+        "id": 5
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            0,
+            9
+          ],
+          "key": "0,AT721,AT403",
+          "carrierCode": "AT",
+          "duration": 1250,
+          "seats": 5
+        },
+        "id": 6
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            0,
+            10
+          ],
+          "key": "0,AT721,AT411",
+          "carrierCode": "AT",
+          "duration": 1590,
+          "seats": 5
+        },
+        "id": 7
+      }
+    ]
+  },
+  "preferences": {
+    "currency": "EUR",
+    "locale": "fr_FR"
+  }
+}

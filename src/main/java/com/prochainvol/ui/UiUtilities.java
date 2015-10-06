@@ -50,7 +50,7 @@ public class UiUtilities {
 	public static String getJsonContent(boolean noRRU,
 			ProchainvolObject... prochainvolObjects) throws ServletException {
 		String result = null;
-		System.out.println("noRRU = " + noRRU);
+//		System.out.println("noRRU = " + noRRU);
 		if (noRRU) {
 			result = Arrays
 					.stream(prochainvolObjects)

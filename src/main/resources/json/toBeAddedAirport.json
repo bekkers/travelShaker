@@ -1,0 +1,80 @@
+{
+  "all": {
+    "ZYI": [
+      {
+    "active": 1,
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "ZYI",
+        "icao": "ZUZY",
+        "city": "Xinzhou",
+        "country": "China",
+        "name": "Zunyi Xinzhou Airport",
+        "maj": "04 Sep 2015 18:04:14 CEST",
+        "latitude": 38.344166,
+        "longitude": 107.24886
+      }
+    ],
+    "GBD": [
+      {
+     "active": 1,
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "GBD",
+        "icao": "KGBD",
+        "city": "Great Bend, Kansas",
+        "country": "USA",
+        "name": "Great Bend Municipal Airport",
+        "maj": "04 Sep 2015 18:04:14 CEST",
+        "latitude": 27.802332,
+        "longitude": -98.85917,
+        "altitude": 575.0
+      }
+    ],
+    "KCG": [
+      {
+    "active": 1,
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "KCG",
+        "city": "Chignik, Alaska",
+        "country": "USA",
+        "name": "Chignik Fisheries Airport",
+        "maj": "04 Sep 2015 18:04:14 CEST",
+        "latitude": 56.31778,
+        "longitude": -158.59084
+      }
+    ],
+    "EZV": [
+      {
+     "active": 1,
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "EZV",
+        "icao": "USHB",
+        "city": "Beriozovo",
+        "country": "Russian Federation",
+        "name": "Beryozovo Airport",
+        "maj": "04 Sep 2015 18:04:14 CEST",
+        "latitude": 63.923267,
+        "longitude": 65.04035
+      }
+    ],
+    "RZS ": [
+      {
+     "active": 1,
+        "id": 0,
+        "openflightsid": 0,
+        "iata": "RZS ",
+        "icao": "OPSW",
+        "city": "Sawan",
+        "country": "Pakistan",
+        "name": "Sawan Airport",
+        "maj": "04 Sep 2015 18:04:14 CEST",
+        "latitude": 26.959444,
+        "longitude": 68.873886,
+        "altitude": 78.0
+      }
+    ]
+  }
+}

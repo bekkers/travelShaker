@@ -1,0 +1,399 @@
+{
+  "itineraryResultsPages": [
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 72.49
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 76.50
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 79.49
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            3
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 97.48
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,FR",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 101.49
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://www.edreams.fr/engine/waitPage/waitingPage.jsp?returnTime\u003d0000\u0026testToken\u003d1%2313850599100-2%239667-3%2368570-4%2319259-5%23542850618-6%2322388-7%2319185-8%2312580724771-9%234529503709-10%236030320971\u0026departureDate\u003d20%2F06%2F2015\u0026mktportal\u003dpublicideesMeta\u0026testTokenDate\u003d2015-06-07T03%3A46%3A24\u0026toLocale\u003dfr_FR\u0026departureTime\u003d0000\u0026cabinClassName\u003dTOURIST\u0026searchId\u003d14187630550\u0026departureLocation\u003dCDG\u0026numChilds\u003d0\u0026numAdults\u003d1\u0026returnDate\u003d30%2F06%2F2015\u0026tripTypeName\u003dROUND_TRIP\u0026numInfants\u003d0\u0026resident\u003dfalse\u0026landingPageType\u003dPASSENGER\u0026action\u003dengine%2FItinerarySearch%2Fsearch\u0026searchMainProductTypeName\u003dFLIGHT\u0026filterDirectFlights\u003dtrue\u0026arrivalLocation\u003dDUB\u0026utm_campaign\u003d38481-CDG-DUB\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "ED"
+    },
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 79.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 84.00
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 86.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            3
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 102.98
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,FR",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 106.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://billetavion.opodo.fr/opodo/flights/searchRedirect?returnTime\u003d0000\u0026testToken\u003d1%231750244858-2%23933-3%2370349-4%2327206-5%23542813655-6%2335470-7%2321827-8%236828772059-9%234483963296-10%237072068933\u0026departureDate\u003d20%2F06%2F2015\u0026mktportal\u003dpublicideesMeta\u0026toLocale\u003dfr_FR\u0026testTokenDate\u003d2015-06-07T03%3A46%3A24\u0026departureTime\u003d0000\u0026cabinClassName\u003dTOURIST\u0026searchId\u003d14187630554\u0026departureLocation\u003dCDG\u0026numChilds\u003d0\u0026numAdults\u003d1\u0026tripTypeName\u003dROUND_TRIP\u0026returnDate\u003d30%2F06%2F2015\u0026numInfants\u003d0\u0026resident\u003dfalse\u0026landingPageType\u003dPASSENGER\u0026action\u003dengine%2FItinerarySearch%2Fsearch\u0026searchMainProductTypeName\u003dFLIGHT\u0026reset\u003dtrue\u0026filterDirectFlights\u003dtrue\u0026arrivalLocation\u003dDUB\u0026utm_campaign\u003dCDG-DUB\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "OP"
+    },
+    {
+      "itineraryResults": [
+        {
+          "price": {
+            "totalPrice": 71.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "0,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 76.00
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "1,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 78.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "2,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            0
+          ],
+          "secondSegmentsIds": [
+            3
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 94.98
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "3,FR",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            1
+          ]
+        },
+        {
+          "price": {
+            "totalPrice": 98.99
+          },
+          "clickoutURLParams": "\u0026collectionMethodId\u003d12",
+          "key": "4,FR,TF",
+          "resident": false,
+          "firstSegmentsIds": [
+            4
+          ],
+          "secondSegmentsIds": [
+            2
+          ]
+        }
+      ],
+      "clickoutURL": "http://www.govoyages.com/landingsearchmeta.aspx?adt\u003d1\u0026all_ret\u003doui\u0026bb\u003d0\u0026cls\u003deco\u0026directFlight\u003dtrue\u0026dte_dep\u003d2015-06-20\u0026dte_ret\u003d2015-06-30\u0026enf\u003d0\u0026landingPageType\u003dRESULT\u0026lng\u003dfr\u0026mktportal\u003dpublicideesMeta\u0026reset\u003dtrue\u0026resident\u003dfalse\u0026searchId\u003d14187630551\u0026testToken\u003d1%233048-2%23132-3%2321590-4%238522-5%23542850618-6%2374847-7%239073-8%2312580724771-9%232742029426-10%232742029437\u0026testTokenDate\u003d2015-06-07T03%3A46%3A24\u0026typ\u003dflight\u0026vil_arr\u003dDUB\u0026vil_dep\u003dCDG\u0026utm_campaign\u003dCDG-DUB\u0026utm_content\u003dmeta-fr\u0026utm_medium\u003dmetasearch\u0026utm_source\u003dpublicideesmeta\u0026utm_term\u003dflight",
+      "brand": "GV"
+    }
+  ],
+  "legend": {
+    "carriers": [
+      {
+        "code": "FR",
+        "name": "Ryanair"
+      },
+      {
+        "code": "TO",
+        "name": "Transavia France"
+      }
+    ],
+    "locations": [
+      {
+        "geoNodeId": 528,
+        "cityName": "Dublin",
+        "name": "Dublin",
+        "type": "Airport",
+        "iataCode": "DUB",
+        "cityIataCode": "DUB",
+        "countryCode": "IE",
+        "countryName": "Irlande"
+      },
+      {
+        "geoNodeId": 1391,
+        "cityName": "Paris",
+        "name": "Orly",
+        "type": "Airport",
+        "iataCode": "ORY",
+        "cityIataCode": "PAR",
+        "countryCode": "FR",
+        "countryName": "France"
+      },
+      {
+        "geoNodeId": 290,
+        "cityName": "Paris",
+        "name": "Paris Beauvais",
+        "type": "Airport",
+        "iataCode": "BVA",
+        "cityIataCode": "PAR",
+        "countryCode": "FR",
+        "countryName": "France"
+      }
+    ],
+    "sectionResults": [
+      {
+        "section": {
+          "id": "3860",
+          "fromGeoNodeId": 1391,
+          "departureDate": "2015-06-20T06:15:00",
+          "toGeoNodeId": 528,
+          "arrivalDate": "2015-06-20T07:05:00",
+          "carrierCode": "TO",
+          "duration": 110
+        },
+        "id": 0
+      },
+      {
+        "section": {
+          "id": "  26",
+          "fromGeoNodeId": 528,
+          "departureDate": "2015-06-30T19:15:00",
+          "toGeoNodeId": 290,
+          "arrivalDate": "2015-06-30T21:50:00",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 1
+      },
+      {
+        "section": {
+          "id": "3861",
+          "fromGeoNodeId": 528,
+          "departureDate": "2015-06-30T19:55:00",
+          "toGeoNodeId": 1391,
+          "arrivalDate": "2015-06-30T22:45:00",
+          "carrierCode": "TO",
+          "duration": 110
+        },
+        "id": 2
+      },
+      {
+        "section": {
+          "id": "  22",
+          "fromGeoNodeId": 528,
+          "departureDate": "2015-06-30T06:25:00",
+          "toGeoNodeId": 290,
+          "arrivalDate": "2015-06-30T09:00:00",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 3
+      },
+      {
+        "section": {
+          "id": "  29",
+          "fromGeoNodeId": 290,
+          "departureDate": "2015-06-20T22:15:00",
+          "toGeoNodeId": 528,
+          "arrivalDate": "2015-06-20T22:50:00",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 4
+      }
+    ],
+    "segmentResults": [
+      {
+        "segment": {
+          "sectionIds": [
+            0
+          ],
+          "key": "0,TO3860",
+          "carrierCode": "TO",
+          "duration": 110
+        },
+        "id": 0
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            1
+          ],
+          "key": "0,FR26",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 1
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            2
+          ],
+          "key": "0,TO3861",
+          "carrierCode": "TO",
+          "duration": 110
+        },
+        "id": 2
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            3
+          ],
+          "key": "0,FR22",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 3
+      },
+      {
+        "segment": {
+          "sectionIds": [
+            4
+          ],
+          "key": "0,FR29",
+          "carrierCode": "FR",
+          "duration": 95
+        },
+        "id": 4
+      }
+    ]
+  },
+  "preferences": {
+    "currency": "EUR",
+    "locale": "fr_FR"
+  }
+}

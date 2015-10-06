@@ -1,0 +1,100 @@
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 ) 
+                url('http://i.stack.imgur.com/FhHRx.gif') 
+                50% 50% 
+                no-repeat;
+}
+.google {
+	border: 1px solid red;
+	width: 100%;
+	max-width: 500px;
+	padding-top: 100%;
+	box-sizing: border-box;
+	position: relative;
+}
+
+div .{
+    border: 2px solid #a1a1a1;
+    padding: 10px 40px; 
+    width: 300px;
+height: 220px;
+}
+
+
+iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.logo {
+	margin-bottom: 10px; /* size of gutter */
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	padding-top: 10px;
+}
+
+.inlineLeft {
+	foat: left;
+	margin: 0 0 2em 1em;
+	width: 50%;
+}
+
+.top-separator {
+	border-top: 1px solid #DEDEDE;
+	padding-top: 5px; /* size of gutter */
+}
+
+.monospace {
+	font-family: monospace;
+}
+
+.bgColor0 {
+	background-color: LightCyan;
+}
+
+.bgColor1 {
+	background-color: Ivory;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.small {
+	font-size: small;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+h1 {
+	font-size: 4vw;
+}
+
+#requestForm label.error {
+    color: #FB3A3A;
+    display: inline-block;
+    margin: 4px 0 5px 125px;
+    padding: 0;
+    text-align: left;
+    width: 220px;
+}

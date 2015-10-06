@@ -1,0 +1,14 @@
+{
+	"stops":0,
+	"maxprice":0.05,
+	"departureAirportIata":["MRS"],
+	"arrivalAirportIata":["LON"],
+	"departureDate":"15 Feb 2015 04:42:58 CET",
+	"returnDate":"28 Feb 2015 04:42:58 CET",
+	"departureTime":"ANY",
+	"returnTime":"ANY",
+	"travelType":"RETURN",
+	"adults":1,
+	"children":0,
+	"infants":0
+}

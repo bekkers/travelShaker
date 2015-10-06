@@ -102,7 +102,7 @@ public class EditResponsiveVisitor extends AbstractResponsiveVisitor implements
 		for (int i = 0; i<6; i++) {
 			Element option = doc.createElement("option");
 			option.setAttribute("value", Integer.toString(i));
-			if (i==requestparams.getAdults()) {
+			if (i==1) {
 				option.setAttribute("selected", "selected");
 			}
 			Text libelle = doc.createTextNode(Integer.toString(i));

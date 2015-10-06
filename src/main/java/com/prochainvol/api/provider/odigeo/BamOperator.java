@@ -22,7 +22,7 @@ public class BamOperator implements InterfaceOdigeoExecutor {
 
 	private static final String TOMCAT = Constants.PROCHAINVOL_PROPS.getProperty("tomcatSurProchainvol");
 	private static final String API_NAME = Constants.PROCHAINVOL_PROPS.getProperty("apiName");
-	private static final String VERSI0N = Constants.PROCHAINVOL_PROPS.getProperty("version");
+	private static final String VERSI0N = Constants.PROCHAINVOL_PROPS.getProperty("previousVersion");
 	private static final String url = TOMCAT+"/"+API_NAME+VERSI0N+"/odigeoSearch.jsp";
 	// HTTP POST request
 	public SearchStatusResponse execService(Search search) throws ProchainvolException {

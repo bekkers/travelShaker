@@ -1,0 +1,67 @@
+[
+{
+     "active": 1,
+  "id": 60,
+  "openflightsid": 9538,
+  "iata": "YMP",
+  "icao": "",
+  "city": "Port McNeill",
+  "country": "Canada",
+  "name": "Port McNeill Airport",
+  "maj": "04 Sep 2015 15:49:55 CEST",
+  "timezone": -8.0,
+  "dst": "A",
+  "latitude": 50.575558,
+  "longitude": -127.02861,
+  "altitude": 225.0
+},
+{
+     "active": 1,
+  "id": 51,
+  "openflightsid": 9537,
+  "iata": "YMU",
+  "icao": "",
+  "city": "Mansons Landing",
+  "country": "Canada",
+  "name": "Mansons Landing Water Aerodrome",
+  "maj": "04 Sep 2015 15:49:55 CEST",
+  "timezone": -8.0,
+  "dst": "A",
+  "latitude": 50.066666,
+  "longitude": -124.98333,
+  "altitude": 0.0
+},
+{
+     "active": 1,
+  "id": 52,
+  "openflightsid": 9536,
+  "iata": "YPT",
+  "icao": "",
+  "city": "Pender Harbour",
+  "country": "Canada",
+  "name": "Pender Harbour Water Aerodrome",
+  "maj": "04 Sep 2015 15:49:55 CEST",
+  "timezone": -8.0,
+  "dst": "A",
+  "latitude": 49.61667,
+  "longitude": -124.01667,
+  "altitude": 0.0
+},
+{
+     "active": 1,
+  "id": 53,
+  "openflightsid": 9386,
+  "iata": "NLT",
+  "icao": "ZWNL",
+  "city": "Xinyuan",
+  "country": "China",
+  "name": "Nalati",
+  "maj": "04 Sep 2015 15:49:55 CEST",
+  "timezone": 8.0,
+  "dst": "U",
+  "latitude": 43.433056,
+  "longitude": 83.38028,
+  "altitude": 0.0
+}
+
+]

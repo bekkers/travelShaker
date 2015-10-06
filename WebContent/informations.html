@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Documentation Api Travelshacker</title>
+<link href="css/prochainvol.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+	<a id="begin"></a>
+	<h1>Api Travelshacker</h1>
+	<h2>Table des Matières</h2>
+	<a href="#v07">Version 0.7</a>
+	<ol>
+		<li><a href="#detailsv07">Détails des nouveautés de la
+				version 0.7</a>
+			<ol>
+				<li><a href="#2modes">Rappel sur les deux modes de
+						fonctionnement de <em>Travelshacker</em>
+				</a></li>
+				<li><a href="#login">Accès protégé par mot de passe, notion
+						de session</a></li>
+				<li><a href="#filtre">Filtres en parametre des requetes</a></li>
+				<li><a href="#providerBudgetair">Nouveau provider : <span
+						class="italic">budgetair</span></a></li>
+				<li><a href="#bug_iata">Bug sur les iata inconnus</a></li>
+				<li><a href="#TravelPlace">Objets <code>TravelPlace</code></a></li>
+				<li><a href="#RailwayStation">Objets <code>RailwayStation</code></a></li>
+				<li><a href="#info_aeroport">Récupération en continu
+						d'informations sur les aéroports</a></li>
+				<li><a href="#Country">Objets <code>Country</code></a></li>
+				<li><a href="#TravelType">Objets <code>TravelType</code></a></li>
+			</ol></li>
+		<li><a href="#servicesv07">Liste des services de la version
+				0.7</a></li>
+		<li><a href="#providersv07">Liste des providers connus de
+				l'API V 0.7</a></li>
+	</ol>
+	<a href="#v06">Version 0.6</a>
+	<ol>
+		<li><a href="#providersv06">Liste des providers connus de
+				l'API V 0.6</a></li>
+		<li><a href="#apiv06">Structure de l'API V 0.6</a></li>
+	</ol>
+	<a id="v07"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h2>Version 0.7</h2>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a id="detailsv07"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h3>Détails des nouveautés de la v 0.7</h3>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<a id="2modes"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						Rappel sur les deux modes de fonctionnement de <em>Travelshacker</em>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		La pluspart des requètes de l'API <em>Travelshacker</em> fonctionnent
+		selon deux modes :
+	</p>
+	<ol>
+		<li>mode <code>json</code>, c'est le mode normal d'utilisation.
+			Les requètes rendent leur résultat en json.
+		</li>
+		<li>mode <code>html</code>, encore appelé mode <code>web-browser</code>.
+			Les requètes rendent leur résultat sous forme de pages html. Il
+			s'agit d'un mode pour administrer l'API <em>Travelshaker</em>. Ce
+			mode permet aussi d'effectuer des tests des requètes à l'aide d'un
+			navigateur.
+		</li>
+	</ol>
+	<p>
+		Tous les services concernés par les deux modes de fonctionnement
+		possèdent un paramètre
+		<code>output</code>
+		optionnel, à deux valeurs possibles
+		<code>{html | json}</code>
+		. La valeur de ce paramètre définit le type de réponse envoyée par
+		l'api <span class="italic">Travelshacker</span>. Par défaut la valeur
+		du paramètre
+		<code>output</code>
+		est
+		<code>json</code>
+		, de sorte qu'en l'absence de ce paramètre, l'api <span class="italic">Travelshacker</span>
+		répond en
+		<code>json</code>
+		.
+	</p>
+
+	<a id="login"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>Acces protégé par mot de passe</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Depuis sa version 0.7, l'utilisation de l'API <em>Travelshaker</em> en
+		mode
+		<code>html</code>
+		est protégée par mot de passe. Il y a deux utilisateurs
+		<code>thomas</code>
+		,
+		<code>pratt</code>
+		.
+	</p>
+	<p>L'accés à l'interface html d'administration et de test se fait par
+		une page de login classique :</p>
+	<table border="1">
+		<tbody>
+			<tr class="bgColor0">
+				<td>URL</td>
+				<td><a href="http://www.prochainvol.com:8080/airlines07">http://www.prochainvol.com:8080/airlines07</a></td>
+			</tr>
+			<tr class="bgColor1">
+				<td>Réponse</td>
+				<td>la page d'acceuil de l'admin <span class="italic">Travelshaker</span></td>
+			</tr>
+			<tr class="bgColor0">
+				<td>Durée de la session</td>
+				<td>sans activité : 3 mn</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a id="filtre"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>Filtres en parametre des requetes</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		L'API <em>Travelshaker</em> peut filtrer les résultats des <a
+			href="#requestService"><code>request service</code></a> avant de les
+		transmettre. La liste des filtres est la suivantes :
+	</p>
+	<table>
+		<thead>
+			<tr>
+				<th>Filter Name</th>
+				<th>Role</th>
+				<th>Parameter Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><code>MAX_STOP(#n:int)</code></td>
+				<td>nb stops on move or on return &lt; <code>#n</code></td>
+				<td><code>maxStop=n</code></td>
+			</tr>
+			<tr>
+				<td><code>MAX_STOP_ON_MOVE(#n:int)</code></td>
+				<td>nb stops on move &lt; <code>#n</code></td>
+				<td><code>maxStopOnMove=n</code></td>
+			</tr>
+			<tr>
+				<td><code>MAX_STOP_ON_RETURN(#n:int)</code></td>
+				<td>nb stops on return &lt; <code>#n</code></td>
+				<td><code>maxStopOnReturn=n</code></td>
+			</tr>
+			<tr>
+				<td><code>MAX_PRICE(#p:float)</code></td>
+				<td>price &lt; <code>#p</code></td>
+				<td><code>maxPrice=p</code></td>
+			</tr>
+			<tr>
+				<td><code>RELATIVE_MAX_PRICE(#p:float)</code></td>
+				<td>price &lt; <code>minPrice + p * (maxPrice -
+						minPrice)</code></td>
+				<td><code>relativeMaxPrice=p</code></td>
+			</tr>
+		</tbody>
+	</table>
+	<p>Plusieurs filtres peuvent être appliqués. L'ordre dans lequel
+		ils sont appliqués est important. Certains filtres sont exclusifs les
+		uns des autres. Les fitres peuvent être initialisés de deux manières :
+	</p>
+	<ul>
+		<li>Globalement à l'API <em>Travelshaker</em>. Par défault il 'y
+			a qu'un filtre le fitre <code>MAX_STOP(0)</code>.
+		</li>
+		<li>Localement à un appel en passant un parametre <code>filtre</code>
+			à la demande de <a href="#requestService">service <code>Request</code></a>.
+		</li>
+	</ul>
+	<p>
+		La valeur du paramètre
+		<code>filtre</code>
+		est un objet
+		<code>Filtre</code>
+		sérialisé en JSON. Cet objet filtre contient un seul attribut qui est
+		une liste ordonnée
+		<code>predicates</code>
+		de prédicats de filtrage. Chaque prédicat comporte son type ainsi
+		qu'une valeur, entière ou flottante selon le type. Voici un exemple :
+	
+	<pre>
+{
+  "predicates": [
+    {
+      "value": 7,
+      "flightFilter": "MAX_STOP"
+    },
+    {
+      "value": 0.14,
+      "flightFilter": "RELATIVE_MAX_PRICE"
+    }
+  ]
+}
+</pre>
+	<img src="images/flightFilter.jpg" />
+
+
+
+
+
+	<a id="providerBudgetair"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						Provider <span class="italic">budgetair</span>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Ajout du provider <span class="italic">budgetair</span>. Mais pour
+		l'instant est bloqué au lancement de l'api <span class="italic">Travelshaker</span>,
+		car <span class="italic">budgetair</span> répond
+		<code>non autorisé</code>
+		lorsqu'on le solicite ! ... à voir ...
+	</p>
+	<p>
+		On peut le remettre en route en dynamique par l'interface d'admin de <span
+			class="italic">Travelshaker</span>
+	</p>
+
+	<a id="bug_iata"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>Bug sur les iata inconnus</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Les iata inconnus envoyés par les providers généraient une
+		erreur. Deux amméliorations ont été effectuées :
+	<p>
+	<ul>
+		<li>Considérant que les iata inconnus provenaient généralement de
+			iata de stations ferroviaires, nous avons introduitstoutes les
+			sations ferroviaires décrites avec un iata sur wikiperdia. Voir <a
+			href="#RailwayStation"><code>RailwayStation</code></a>.
+		<li>Pour les autres iata inconnus, dans la version V07, on
+			mémorise en dynamique, l'api travelshaker, ces nouveaux iata, pour la
+			durée de vie de l'api (sans rémanence dans la base). Ils seront
+			perdus lors du prochain reboot de l'api <em>TravelShaker</em>, mais
+			pouront être de nouveau récupérés en dynamique, lors de la prochaine
+			session de l'api.
+		</li>
+	</ul>
+
+	<table id="TravelPlace" style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						Objets de type
+						<code>TravelPlace</code>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Introduction des objets de type
+		<code>TravelPlace</code>
+		avec trois sous types les
+		<code>Airport</code>
+		, les
+		<code>RailwayStation</code>
+		et les
+		<code>FerryTerminal</code>
+		. <img src="images/travelPlaces.jpg" />
+	</p>
+
+	<table id="RailwayStation" style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						Objets de type
+						<code>RailwayStation</code>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Récupération sur le web des informations sur 192 gares qui possèdent
+		un iata selon wikipedia, voir <a
+			href="https://www.google.com/fusiontables/DataSource?docid=1DY7TLusym-ZAk5odXdklOjY49Uq_btHhUU9Aqc_9#rows:id=1">https://www.google.com/fusiontables/DataSource?docid=1DY7TLusym-ZAk5odXdklOjY49Uq_btHhUU9Aqc_9#rows:id=1</a>
+		Ces 192 gares, se répartissent en trois groupes :
+	</p>
+	<ul>
+		<li>41 sont des gares liées à un aéroport, soit parce qu'elles
+			sont au sein même de l'aéroport, soit simplement parce qu'elles en
+			sont proches. Ces gares possèdent le même code iata que l'aéroport.
+			Pour chaque gare de ce type, nous l'avons différencié de son aéroport
+			en introduisant un nouvel objet <code>RailwayStation</code> dont le
+			iata est le même que celui de l'aéroport suffixé par "<code>-A</code>".
+			Ainsi le iata de la gare de TGV de l'éroport <em>Charles De
+				gaules</em> est "<code>CDG-A</code>".
+		</li>
+		<li>56 ont été fusionnées avec des gares déjà connues de l'api <em>TravelShacker</em>
+			mais non liès à un aéroport
+		</li>
+		<li>95 sont de nouvelles gares non liées à un aéroport</li>
+	</ul>
+	<p>Ces 192 gares sont toutes géolocalisées, et on possède autre
+		autres, pour chaqu'une, un lien vers sa description wikipedia et un
+		lien vers sa description géolocalisée. Par exemple pour la gare d'aix
+		en provence TGV les deux liens sont :</p>
+	<ul>
+		<li><a
+			href="http://en.wikipedia.org/wiki/Aix-en-Provence_TGV_railway_station">Aix-en-Provence_TGV_railway_station</a>
+		</li>
+		<li><a
+			href="http://tools.wmflabs.org/geohack/geohack.php?pagename=Aix-en-Provence_TGV_railway_station&amp;params=43_27_18_N_5_19_2_E_type:railwaystation_region:FR-U">43.455,5.317222</a>.
+		</li>
+	</ul>
+	<p>
+		Cette gare située à 3 km de l'aéroport d'aix les Milles possède le
+		même iata que l'aéroport. L'Api
+		<code>TravelShakcker</code>
+		, pour sa part, différencie ces deux entrées par les deux iata
+		respectifs
+		<code>QXB-A</code>
+		pour la gare et
+		<code>QXB</code>
+		pour l'aéroport. Voici un dump de l'information dont on dispose pour
+		ces deux entrées :
+	</p>
+	<pre>
+{
+  "travelplace": "RAILWAY_STATION",
+  "isAirportStation": true,
+  "iata": "QXB-A",
+  "city": "Aix-en-Provence",
+  "city_fr": "Aix-en-Provence",
+  "country": {
+...
+  },
+  "countryName_en": "France",
+  "countryName_fr": "France",
+  "name": "Aix-en-Provence TGV railway station",
+  "name_fr": "Gare d\u0027Aix-en-Provence TGV",
+  "longName": "Aix-en-Provence TGV railway station, Aix-en-Provence, France (same iata as Aix-les-milles airport)",
+  "longName_fr": "Gare d\u0027Aix-en-Provence TGV, Aix-en-Provence, France (même iata que l\u0027aéroport d\u0027Aix-les-milles)",
+  "administrativeDivision": "Provence-Alpes-Côte d\u0027Azur",
+  "urlGeo": "http://tools.wmflabs.org/geohack/geohack.php?pagename=Aix-en-Provence_TGV_railway_station&params=43_27_18_N_5_19_2_E_type:railwaystation_region:FR-U",
+  "urlWikipedia": "http://en.wikipedia.org/wiki/Aix-en-Provence_TGV_railway_station",
+  "maj": "22 Mar 2015 22:05:43 CET",
+  "latitude": 43.455,
+  "longitude": 5.317222
+}
+{
+  "travelplace": "AIRPORT",
+  "isAirportStation": false,
+  "iata": "QXB",
+  "icao": "LFMA",
+  "city": "Aix-les-milles",
+  "city_fr": "Aix-les-milles",
+  "country": {
+...
+  },
+  "countryName_en": "France",
+  "countryName_fr": "France",
+  "name": "Aix Les Milles",
+  "name_fr": "Aix Les Milles",
+  "longName": "Aix-les-milles, France - Aix Les Milles QXB",
+  "longName_fr": "Aix-les-milles, France - Aix Les Milles QXB",
+  "maj": "24 Nov 2014 00:00:00 CET",
+  "timezone": 1.0,
+  "dst": "E",
+  "tz": "",
+  "latitude": 43.5056,
+  "longitude": 5.36778,
+  "altitude": 367.0
+}</pre>
+	<a id="info_aeroport"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>Récupération en continu d'informations sur les aéroports</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Collecte en continu d'informations sur les aéroports fournies
+		avec les réponses envoyées par les providers (idem que pour les iata,
+		pas de rémanence dans la base)</p>
+
+	<a id="Country"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						Introduction des objets
+						<code>Country</code>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Introduction de la notion de <span class="italic">Country</span> au
+		sens de la norme <a href="http://en.wikipedia.org/wiki/ISO_3166-1">ISO_3166-1</a>.
+		Il s'agit des 249 pays reconnus par les nation unies. On les
+		représente dans l'API <span class="italic">Travelshaker</span> par les
+		objets
+		<code>Country</code>
+		. Ces objets sont référencés par les
+		<code>travelplace</code>
+		. Les pays sont chargés une fois et une seule, lors du premier login
+		d'un utilisateur. L'API <span class="italic">Travelshaker</span>
+		fournit maintenant un service de récupération des informations sur les
+		pays des gares et aéroports.
+	</p>
+	<p>
+		Voici la structure des objets
+		<code>Country</code>
+	</p>
+	<img src="images/country.jpg" />
+	<h5>Quatre sources de récupération des informations sur les
+		aéroports</h5>
+	<ul>
+		<li><span class="italic">Wikipedia</span> en français sur la
+			norme ISO_3166-1 (récupération faite semi manuellement par extraction
+			par l'api XML de java des informations d'une table html copiée
+			manuellement depuis l'url)<a
+			href="http://fr.wikipedia.org/wiki/ISO_3166-1">http://fr.wikipedia.org/wiki/ISO_3166-1</a>
+		</li>
+		<li><span class="italic">Wikipedia</span> en anglais sur la norme
+			ISO_3166-1 (récupération faite semi manuellement par extraction par
+			l'api XML de java des informations d'une table html copiée
+			manuellement depuis l'url)<a
+			href="http://en.wikipedia.org/wiki/ISO_3166-1">http://en.wikipedia.org/wiki/ISO_3166-1</a>
+		</li>
+		<li><span class="italic">Wikipedia</span> en français sur l'union
+			européenne (récupération faite semi manuellement par extraction par
+			l'api XML de java des informations d'une table html copiée
+			manuellement depuis l'url)<a
+			href="http://fr.wikipedia.org/wiki/Union_europ%C3%A9enne">http://fr.wikipedia.org/wiki/Union_europ%C3%A9enne</a>.
+			On complète aussi l'information des 28 pays de l'union européenne.</li>
+		<li><span class="italic">dbpedia</span> (récupération en
+			dynamique par requète <span class="italic">sparql</span>, via l'API <span
+			class="italic">sparql endpoint</span> de dbpedia, depuis java). Pour
+			essayer, voir <a href="http://dbpedia.org/sparql">http://dbpedia.org/sparql</a>
+			ou bien <a href="http://dbpedia.org/snorql/">http://dbpedia.org/snorql/</a>
+		</li>
+	</ul>
+	<p>Les deux premiers tableaux wikipedia permettent de récupérer en
+		deux temps de l'information sur les 249 pays reconnus par l'ONU. Puis
+		on complète avec l'informations sur les pays de l'union européenne.</p>
+	<h5>
+		Le cas de <span class="italic">dbpedia</span>
+	</h5>
+	<p>
+		Sur <span class="italic">dbpedia</span>, par <span class="italic">sparql</span>,
+		on complête l'information pour 183 pays parmi les 249 pays récupérés
+		dans les tabeaux de <span class="italic">wikipedia</span>.
+	</p>
+	<p>Parmis ces nouvelles information on trouve un abstract sur le
+		pays en français et en anglais, Voici l'exemple des abstracts possédés pour la
+		France :</p>
+	<blockquote>La France, dans sa dénomination officielle la
+		République française, est un pays d'Europe, aujourd'hui une République
+		constitutionnelle unitaire ayant un régime parlementaire à tendance
+		présidentielle, dont la majeure partie du territoire et de la
+		population est située en Europe occidentale, mais qui comprend
+		également plusieurs régions et territoires répartis à travers le
+		monde. Elle a pour capitale Paris, pour langue officielle le français
+		et pour monnaie l’euro. Sa devise est « Liberté, Égalité, Fraternité
+		», et son drapeau est constitué de trois bandes verticales
+		respectivement bleue, blanche et rouge. Son hymne est La
+		Marseillaise.La France est un pays formé à la fin du Haut Moyen Âge,
+		tirant son nom du peuple franc. Du début du XVIIe siècle à la première
+		moitié du XXe siècle, elle possède un vaste empire colonial. À partir
+		des années 1950, elle est l’un des acteurs de la construction de
+		l’Union européenne. Elle est une puissance nucléaire, et l’un des cinq
+		membres permanents du Conseil de sécurité des Nations unies. La France
+		joue un rôle important dans l’histoire mondiale par l’influence de sa
+		culture, de sa langue et de ses valeurs démocratiques, laïques et
+		républicaines.La France occupe en 2012, le cinquième rang mondial pour
+		le produit intérieur brut. Son économie est de type capitaliste avec
+		une intervention étatique assez forte. Elle figure parmi les premiers
+		mondiaux dans les secteurs de l’agroalimentaire, de l’aéronautique, de
+		l’automobile, des produits de luxe, du tourisme et du
+		nucléaire.Peuplée de 66,6 millions d’habitants au 1er janvier 2014, la
+		France est un pays développé, avec un indice de développement humain
+		très élevé.",</blockquote>
+	<blockquote>France (UK: /ˈfrɑːns/; US: /ˈfræns/; French:
+		[fʁɑ̃s] ), officially the French Republic (French: République
+		française [ʁepyblik fʁɑ̃sɛz]), is a sovereign country in Western
+		Europe that includes overseas regions and territories. Metropolitan
+		France extends from the Mediterranean Sea to the English Channel and
+		the North Sea, and from the Rhine to the Atlantic Ocean. It is one of
+		only three countries (with Morocco and Spain) to have both Atlantic
+		and Mediterranean coastlines. Due to its shape, it is often referred
+		to in French as l’Hexagone (\"The Hexagon\").By area, F rance is the
+		largest country in Western Europe and the European Union, and the
+		third-largest in Europe as a whole. The total population of France is
+		approaching 67 million (including all overseas departments and
+		territories). With a European component of 63,990,000 (est. April
+		2014), France is the fourth most-populous European country. France is
+		a unitary semi-presidential republic with its capital in Paris, the
+		nation's largest city and the main cultural and commercial center. The
+		current Constitution of France, adopted by referendum on 4 October
+		1958, establishes the country as secular and democratic, with its
+		sovereignty derived from the people. The nation's ideals are expressed
+		in the Declaration of the Rights of Man and of the Citizen, one of the
+		world's earliest documents on human rights, which was formulated
+		during the seminal French Revolution of the late 18th century.France
+		has been a major power in Europe since the Late Middle Ages. It
+		possessed the second-largest colonial empire during the 19th and early
+		20th centuries. Throughout its long history, France has produced many
+		influential artists, thinkers, and scientists, and remains prominent
+		global center of culture. It hosts the world's fourth-largest number
+		of cultural UNESCO World Heritage Sites, drawing around 83 million
+		foreign tourists annually – the most of any country in the
+		world.France remains a great power with significant cultural,
+		economic, military, and political influence in Europe and around the
+		world. It has the world's fifth-largest military budget, third-largest
+		stockpile of nuclear weapons, and second-largest diplomatic corps,
+		after the United States. Due to its overseas regions and territories
+		throughout the world, France has the second-largest exclusive economic
+		zone in the world. France is a developed country and has the world's
+		fifth-largest economy by nominal GDP and seventh-largest by purchasing
+		power parity. In terms of total household wealth, France is the
+		wealthiest nation in Europe and fourth in the world.French citizens
+		enjoy a high standard of living, with the country performing well in
+		international rankings of education, health care, life expectancy,
+		civil liberties, and human development. France is a founding member of
+		the United Nations, where it serves as one of the five permanent
+		members of the UN Security Council. It is a member of numerous
+		international institutions, including Francophonie, the G8, G20, NATO,
+		OECD, WTO, and the Latin Union. France is a founding and leading
+		member state of the European Union.</blockquote>
+	<p>
+		On trouve aussi des informations éventuelles supplémentaires prises
+		dans dbpedia par des requètes <a
+			href="http://en.wikipedia.org/wiki/SPARQL">sparql</a>. Par exemple,
+		on peut trouver si l'on conduit à droite ou à gauche dans le pays; la
+		monnaie du pays ; sa capitale eventuellement ... On trouve aussi un
+		classement pour certains pays répartis en 65 groupes définis par <span
+			class="italic">dbpedia</span>. Vous pouvez voir par vous même, en
+		dynamique, ces informations en interrogeant le
+		<code>sparql endpoint</code>
+		de <span class="italic">dbpedia</span>. Voici deux exemples :
+	</p>
+	<ul>
+		<li>Connaître les 65 groupes actuels de dbpedia : <a
+			href="http://dbpedia.org/snorql/?query=prefix+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0Aprefix+yago%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F%3E%0D%0ASELECT+distinct+%3Ftype+%0D%0Awhere+{%0D%0A%09%3Fcountry+a+yago%3AMemberStatesOfTheUnitedNations+%3B%0D%0A%09%09a+dbo%3ACountry+%3B%0D%0A%09%09a+%3Ftype.%0D%0A%09FILTER+regex%28str%28%3Ftype%29%2C+%22^http%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F.*Countries%22%29+%0D%0A}+%0D%0A"
+			target="_blank">Rechercher les groupes en sparql sur dbpedia</a>
+		</li>
+		<li>Connaître les pays ayant actuellement un groupe sous dbpedia,
+			ainsi que les groupes auxquels ils appartiennent : <a
+			href="http://dbpedia.org/snorql/?query=prefix+dbo%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2F%3E%0D%0Aprefix+yago%3A+%3Chttp%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F%3E%0D%0ASELECT+distinct+%3Fcountry+%3Ftype+%0D%0Awhere+{%0D%0A%09%3Fcountry+a+yago%3AMemberStatesOfTheUnitedNations+%3B%0D%0A%09%09a+dbo%3ACountry+%3B%0D%0A%09%09a+%3Ftype.%0D%0A%09FILTER+regex%28str%28%3Ftype%29%2C+%22^http%3A%2F%2Fdbpedia.org%2Fclass%2Fyago%2F.*Countries%22%29+%0D%0A}+order+by+%3Fcountry%0D%0A"
+			target="_blank">Rechercher les pays ayant un groupe sur dbpedia</a>
+		</li>
+	</ul>
+	<p>Voici par exmple un dump des informations dont on dispose pour
+		la France :</p>
+	<pre>
+  "country": {
+    "dbpediaCountryUri": "http://dbpedia.org/resource/France",
+    "isoName": "FRANCE",
+    "nameEn": "France",
+    "nameFr": "France",
+    "xLongName": "République française",
+    "longNameEn": "French Republic",
+    "countryUrl": "http://fr.wikipedia.org/wiki/France",
+    "driveOn": "right",
+    "a2IsoCode": "FR",
+    "a3UnCode": "FRA",
+    "unNumericCode": "250",
+    "currencyCode": "EUR",
+    "currencyNameFr": "Euro",
+    "currencyUrl": "http://fr.wikipedia.org/wiki/Euro",
+    "currencySymbol": " €",
+    "abstractEn": "France ...,
+    "abstractFr": "La France, ...,
+    "capitalName": "Paris",
+    "capitalUrl": "http://fr.wikipedia.org/wiki/Paris",
+    "urlFlag": "http://commons.wikimedia.org/wiki/File:Flag_of_France.svg",
+    "urlFlagThumbnail": "//upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_France.svg/30px-Flag_of_France.svg.png",
+    "groups": [
+      "CountriesOfTheMediterraneanSea",
+      "AlpineCountries",
+      "French_speakingCountries",
+      "CountriesBorderingTheAtlanticOcean",
+      "EuropeanCountries",
+      "EuropeanUnionCountries"
+    ]
+  }	</pre>
+
+	<a id="TravelType"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h4>
+						L'objet
+						<code>TravelType</code>
+					</h4>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		L'objet
+		<code>TravelType</code>
+		décrit le type de voyage
+	</p>
+	<table>
+		<tbody>
+			<tr>
+				<td><code>RETURN</code></td>
+				<td>Aller-retour</td>
+			</tr>
+			<tr>
+				<td><code>ONE_WAY</code></td>
+				<td>Aller simple</td>
+			</tr>
+			<tr>
+				<td><code>LONG_WEEKEND</code></td>
+				<td>Weekend vendredi/lundi</td>
+			</tr>
+			<tr>
+				<td><code>SHORT_WEEKEND</code></td>
+				<td>Weekend vendredi/dimanche</td>
+			</tr>
+			<tr>
+				<td><code>LONG_WEEK</code></td>
+				<td>Semaine lundi/dimanche</td>
+			</tr>
+			<tr>
+				<td><code>MEDIUM_WEEK</code></td>
+				<td>Semaine lundi/vendredi</td>
+			</tr>
+			<tr>
+				<td><code>SHORT_WEEK</code></td>
+				<td>Semaine lundi/jeudi</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a id="servicesv07"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h3>Liste des services de la version 0.7</h3>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<h4>
+		Note 1 : Mode de fonctionnement de l'api <span class="italic">Travelshacker</span>
+		et parametrage des services
+	</h4>
+	<p>
+		La grande majorité des services de l'api <span class="italic">Travelshacker</span>
+		fonctionnent sous deux modes :
+	</p>
+	<ol>
+		<li>Mode "<span class="italic">test en ligne des services</span>"
+			grâce à l'utilisateur d'un navigateur. Les réponses aux requètes sont
+			données en <code>html</code>.
+		</li>
+		<li>Mode "<span class="italic">exploitation</span>". Les réponses
+			aux requètes sont données en <code>json</code>.
+		</li>
+	</ol>
+
+	<h4>Note 2 : Notion de session</h4>
+	<p>
+		Voir <a href="#login">Acces protégé par mot de passe, notion de
+			session</a> pour des précisions sur cette notion de session.
+	</p>
+	<table border="1">
+		<thead>
+			<tr class="bgColor1">
+				<th>Service</th>
+				<th>Description</th>
+				<th>Paramètres</th>
+				<th>Résultat json</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="bgColor0">
+				<th><code>StartTravelShacker</code></th>
+				<td>Démarrage d'une session <span class="italic">Travelshaker</span>.
+					<br />Obligatoire avant une demande de service, service "<code>Bam</code>"
+					excepté
+				</td>
+				<td>Pas de paramètre</td>
+				<td><code>{"response":"ok"}</code></td>
+			</tr>
+			<tr class="bgColor1">
+				<th><code>Bam</code></th>
+				<td>Test de l'API <span class="italic">Travelshaker</span>.
+				</td>
+				<td>Pas de paramètre</td>
+				<td><code>{"response":"ok"}</code></td>
+			</tr>
+			<tr class="bgColor0">
+				<th><code>GetTravelTypes</code></th>
+				<td>Obtenir la liste des types de voyages. Voir <a
+					href="#TravelType"><code>TravelType</code></a></td>
+				<td>Pas de paramètre</td>
+				<td><a href="GetTravelTypes" target="_blank">See example</a></td>
+			</tr>
+			<tr class="bgColor1">
+				<th id="requestService"><code>Request</code></th>
+				<td>Diffuser une requète aux providers.<br />Une session doit
+					être en cours
+				</td>
+				<td>
+					<table>
+						<tbody>
+							<tr>
+								<td><code>output</code></td>
+								<td bgcolor="salmon">Voir note ci-dessus</td>
+							</tr>
+							<tr>
+								<td><code>departAirport</code></td>
+								<td bgcolor="salmon">Iata de l'aéroport de départ</td>
+							</tr>
+							<tr>
+								<td><code>arrivalAirport</code></td>
+								<td bgcolor="salmon">Iata de l'aéroport d'arrivée</td>
+							</tr>
+							<tr>
+								<td><code>tripType</code></td>
+								<td bgcolor="salmon">Type de voyage parmi <a
+									href="#TravelType"><code>TravelType</code></a></td>
+							</tr>
+							<tr>
+								<td><code>departDate</code></td>
+								<td bgcolor="salmon">Date de départ (format des dates "<code>JJ/MM/AAAA</code>")
+								</td>
+							</tr>
+							<tr>
+								<td><code>returnDate</code></td>
+								<td bgcolor="salmon">Date de retour (obligatoire selon le
+									type de voyage)</td>
+							</tr>
+							<tr>
+								<td><code>stops</code></td>
+								<td bgcolor="salmon">Nombre d'arrets <code>{N</code>
+									(entier) <code> | ANY}</code> (0 par défaut)
+								</td>
+							</tr>
+							<tr>
+								<td><code>adults</code></td>
+								<td bgcolor="salmon">Nombre d'adultes</td>
+							</tr>
+							<tr>
+								<td><code>children</code></td>
+								<td bgcolor="salmon">Nombre d'enfants (0 par défaut)</td>
+							</tr>
+							<tr>
+								<td><code>infants</code></td>
+								<td bgcolor="salmon">Nombre de bébés (0 par défaut)</td>
+							</tr>
+							<tr>
+								<td><code>action</code></td>
+								<td bgcolor="salmon">Paramètre optionnel, si présent, il
+									doit valoir "<code>Send</code>"
+								</td>
+							</tr>
+							<tr>
+								<td><code>withReportUnit</code></td>
+								<td bgcolor="salmon">Paramètre booléen optionnel, il vaut "<code>false</code>"
+									par défaut ou si sa valeur n'est pas "<code>true</code>"
+								</td>
+							</tr>
+							<tr>
+								<td><code>filter</code></td>
+								<td bgcolor="salmon">Paramètre optionnel qui est un objet
+									Json décrivant la liste des filtres à appliquer pour cette
+									demande de service. Voir <a href="#filtre">Filtres</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td><span class="italic">Réponse sans erreur</span> <br /> <code>{"response":"ok",
+					</code><br /> <code>"content": </code><span class="italic">...
+						voir ci-dessous ...</span> <code>}</code> <br /> <span class="italic">Réponse
+						en erreur</span> <br /> <code>{"response":"</code><span class="italic">...
+						err mess ...</span> <code>"}</code></td>
+			</tr>
+			<tr class="bgColor0">
+				<th><code>GetCountry</code></th>
+				<td>Obtenir des informations sur un pays par un de ses noms ou
+					de ses codes. (<span class="italic">Au moins un paramètre
+						requis</span>).
+				</td>
+				<td>
+					<!-- 
+	// 		String a3UnCode = request.getParameter("a3UnCode");
+	// 		String a2IsoCode = request.getParameter("a2IsoCode");
+	// 		String unNumericCode = request.getParameter("unNumericCode");
+	// 		String ISOName = request.getParameter("ISOName");
+	// 		String dbNameEn = request.getParameter("nameEn");
+	// 		String dbLongNameEn = request.getParameter("longNameEn");
+	// 		String dbNameFr = request.getParameter("nameFr");
+-->
+					<table>
+						<tbody>
+							<tr>
+								<td><code>a3UnCode</code></td>
+								<td bgcolor="salmon">3 letters UN code</td>
+							</tr>
+							<tr>
+								<td><code>a2IsoCode</code></td>
+								<td bgcolor="salmon">2 letters ISO code</td>
+							</tr>
+							<tr>
+								<td><code>unNumericCode</code></td>
+								<td bgcolor="salmon">3 digits UN code</td>
+							</tr>
+							<tr>
+								<td><code>ISOName</code></td>
+								<td bgcolor="salmon">Nom ISO (uppercase)</td>
+							</tr>
+							<tr>
+								<td><code>nameEn</code></td>
+								<td bgcolor="salmon">Nom court anglais</td>
+							</tr>
+							<tr>
+								<td><code>longNameEn</code></td>
+								<td bgcolor="salmon">nom long anglais</td>
+							</tr>
+							<tr>
+								<td><code>nameFr</code></td>
+								<td bgcolor="salmon">nom cours français</td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
+				<td><span class="italic">Réponse sans erreur</span> <br /> <a
+					href="GetCountry?nameFr=france&output=json" target="_blank">See
+						example</a> <br /> <span class="italic">Réponse err (pays
+						inconnu)</span> <br /> <a href="GetCountry?nameFr=blabla&output=json"
+					target="_blank">See example</a> <span class="italic">Réponse
+						err (pas de param)</span> <br /> <a href="GetCountry?output=json"
+					target="_blank">See example</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>
+		Example de demande de service
+		<code>Request</code>
+		:
+	<pre>
+	<![CDATA[
+http://localhost:8080/airlines/Request
+	?departAirport=LON
+	&arrivalAirport=CDG
+	&tripType=SHORT_WEEKEND
+	&departDate=02/27/2015
+	&returnDate=03/01/2015
+	&stops=Any&adults=1
+	&children=1
+	&infants=2
+	&output=html
+]]>
+	</pre>
+
+	<a id="providersv07"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h3>Liste des providers connus de l'API V 0.7</h3>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Trois providers sont connus de la V 0.7 :</p>
+	<ol>
+		<li><span class="italic">Opodo</span> ancienne version</li>
+		<li><span class="italic">Edreams</span> ancienne version</li>
+		<li><a href="#providerBudgetair"><span class="italic">Budgetair</span>
+				(voir restriction ci-dessus</a>)</li>
+
+	</ol>
+
+
+
+	<a id="v06"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h2>Version 0.6</h2>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<a id="providersv06"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h3>Liste des providers connus de l'API V 0.6</h3>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<p>Deux providers sont connus de la V 0.6 :</p>
+	<ol>
+		<li><span class="italic">Opodo</span> ancienne version</li>
+		<li><span class="italic">Edreams</span> ancienne version</li>
+	</ol>
+
+	<a id="apiv06"></a>
+	<table style="width: 100%">
+		<tbody>
+			<tr>
+				<td>
+					<h3>Structure de l'Api v06</h3>
+				</td>
+				<td style="text-align: left; font-size: small; width: 1cm;"><a
+					href="#begin">home</a></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<img src="images/api-v06.jpg" />
+</body>
+</html>

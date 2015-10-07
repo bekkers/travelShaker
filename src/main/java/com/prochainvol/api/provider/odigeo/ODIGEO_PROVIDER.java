@@ -4,7 +4,7 @@ import com.prochainvol.Constants;
 
 public enum ODIGEO_PROVIDER {
 	GV("http://tracking.publicidees.com/clic.php?promoid=106266&progid=515&partid=&url=http://eulerian.govoyages.com/dynclick/govoyages/?etf-publisher=publicidees-metasearch&etf-name=prochainvol&etf-prdref=XXX&eurl=", "GO_VOYAGES"),
-	OP("http://tracking.publicidees.com/clic.php?promoid=106267&progid=1487&partid=&url=", "OPODO"),
+	OP("http://tracking.publicidees.com/clic.php?promoid=106267&progid=1487&cmp=fr-afpi-prochainvol&partid=&url=", "OPODO"),
 	ED("http://tracking.publicidees.com/clic.php?promoid=106269&progid=1811&partid=&url=", "EDREAMS");
 	
 	private final String format;
